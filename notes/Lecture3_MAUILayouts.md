@@ -1,14 +1,6 @@
----
-layout: post
-title: "Lecture 3 : MAUI Layouts"
-permalink: /lectures/maui-layouts
-categories: notes
+# MAUI Layouts
 
----
-
-
-
-[Demo made in class](https://github.com/AppDevIII-W24-Code/Demos/tree/632ce254f018c06db0b29a42a52228b7ad6d41a9/Demo2Layouts)
+[Demo made in class]()
 
 ## Vertical and Horizontal Stack Layouts
 

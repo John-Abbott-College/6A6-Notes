@@ -1,9 +1,4 @@
----
-layout: page
-title: Milestone 1
-permalink: /project/milestone1
-
----
+# Milestone 1
 
 📝**Worth**: 5%
 

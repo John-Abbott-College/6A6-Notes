@@ -1,11 +1,4 @@
----
-layout: post
-title: "Lab 6 - Data Visualization"
-permalink: /labs/lab6
-categories: labs
-
-
----
+# Lab 6 - Data Visualization
 
 1. 📝 **Worth:** 2%  
 2. 📅 **Due:** Friday April 26, 2024 @End of class

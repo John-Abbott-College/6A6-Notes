@@ -1,9 +1,4 @@
----
-layout: page
-title: Milestone 3
-permalink: /project/milestone3
-
----
+# Milestone 3
 
 📝**Worth**: 10%
 
@@ -130,7 +125,7 @@ You are expected to use good coding practices:
   
 #### (Alternative) Using Steam
 Do not perform these steps if you have already validated that the video was added to your team's channel.
-  
+
 - Add a copy of the video to the GitHub repo for documentation.
 
 - Upload to www.microsoftstream.com using your college credentials.

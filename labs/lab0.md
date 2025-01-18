@@ -1,9 +1,5 @@
----
-layout: post
-title: "Lab 0 - Getting Started"
-permalink: /labs/lab0
-categories: labs
----
+# Lab 0 - Getting Started
+
 This first lab or tutorial, will walk you through the tools and the proejct structure that will be used for this course.
 ## Ponderation: 0%
 ## Objectives:

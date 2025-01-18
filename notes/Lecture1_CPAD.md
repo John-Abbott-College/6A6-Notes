@@ -1,4 +1,4 @@
-# Lecture 1: Cross-Platform App Development Frameworks
+# Cross-Platform App Development Frameworks
 The following notes were based on Matt Milner's course on .NET MAUI
 
 ## Computer Applications

@@ -1,9 +1,4 @@
----
-layout: post
-title: "Assignment 2 - Email App Notifications"
-permalink: /assignments/assignment2
-categories: assignments
----
+# Assignment 2 : Push Notifications
 
 * **Worth**: 5%
 * 📅 **Due**: May 16, in class.

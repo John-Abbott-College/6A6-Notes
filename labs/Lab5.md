@@ -1,11 +1,4 @@
----
-layout: post
-title: "Lab 5 - Realtime database"
-permalink: /labs/lab5
-categories: labs
-
-
----
+# Lab 5 - Realtime database
 
 
 

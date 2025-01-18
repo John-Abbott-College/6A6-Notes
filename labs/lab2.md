@@ -1,9 +1,4 @@
----
-layout: post
-title: "Lab 2 - Tip me with binding"
-permalink: /labs/lab2
-categories: labs
----
+# Lab 2 - Tip me with binding
 
 This lab will help you refresh your knowledge of XAML data binding and get familiar a little bit closer to having a proper app architecture.
 

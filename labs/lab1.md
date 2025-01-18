@@ -1,10 +1,4 @@
----
-layout: post
-title: "Lab 1 - Social Media Layouts"
-permalink: /labs/lab1
-categories: labs
-
----
+# Lab 1 - Social Media Layouts
 
 This lab will help you get familiar with the various MAUI layouts and controls. 
 

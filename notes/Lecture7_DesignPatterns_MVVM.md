@@ -1,10 +1,6 @@
----
-layout: post
-title: "Lecture 7 : MVVM"
-permalink: /lectures/mvvm/
-categories: notes
----
-[Demo made in class: MVVM and Unit Testing](https://github.com/AppDevIII-W24-Code/Demos/tree/main/DemoMvvmAndTesting)
+# MVVM
+
+[Demo made in class: MVVM and Unit Testing]()
 
 The Model-View-ViewModel (MVVM) pattern is a *software design pattern*. Design patterns are sets of rules and templates that help make application code **better**, more **structured** or more **consistent**. 
 

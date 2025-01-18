@@ -1,11 +1,6 @@
----
-layout: post
-title: "Lecture 6: Asynchronous programming"
-permalink: /lectures/async
-categories: notes
----
+# Asynchronous programming
 
-[Demo made in class: DemoAsync](https://github.com/AppDevIII-W24-Code/Demos/tree/main/DemoAsync)
+[Demo made in class: DemoAsync]()
 
 By default, C# code is run in a synchronous way or on a single thread. This means that each line of code is executed one at a time in a sequential manner. The execution of one line is blocking for the subsequent line. By default only one thread, which is the smallest sequence of programmed instructions that the OS will allocate processor time. 
 

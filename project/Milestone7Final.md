@@ -1,10 +1,4 @@
----
-layout: page
-title: Milestone 7
-permalink: /project/milestone7
-
-
----
+# Milestone 7
 
 
 

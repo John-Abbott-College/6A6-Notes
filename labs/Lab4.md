@@ -1,11 +1,4 @@
----
-layout: post
-title: "Lab 4 - Authentication API"
-permalink: /labs/lab4
-categories: labs
-
-
----
+# Lab 4 - Authentication API
 
 
 

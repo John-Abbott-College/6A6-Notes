@@ -1,11 +1,6 @@
----
-layout: post
-title: "Lecture 8 : Accessing and Saving Data"
-permalink: /lectures/savedata/
-categories: notes
----
+# Accessing and Saving Data
 
-[Demo made in class: Data](https://github.com/AppDevIII-W24-Code/Demos/tree/main/DemoData)
+[Demo made in class: Data]()
 
 ## Input/Output
 

@@ -1,10 +1,4 @@
----
-layout: post
-title: "Lab 3 - Saving data"
-permalink: /labs/lab3
-categories: labs
-
----
+# Lab 3 - Saving data
 
 
 

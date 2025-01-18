@@ -1,9 +1,4 @@
----
-layout: post
-title: "Lecture 5 : Navigation"
-permalink: /lectures/navigation/
-categories: notes
----
+# MAUI - Navigation
 
 [Demo made in class: Navigation](https://github.com/AppDevIII-W24-Code/Demos/tree/main/DemoNavigation)
 

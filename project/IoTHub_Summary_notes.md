@@ -1,11 +1,3 @@
----
-layout: page
-title: "Summary Notes on IoT connection with .NET"
-permalink: /project/iot
-
-
----
-
 # IoT Hub to .NET MAUI App
 
 ## Fixed Values per container

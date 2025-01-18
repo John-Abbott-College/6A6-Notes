@@ -1,11 +1,4 @@
----
-layout: post
-title: "Assignment 1 - Email App milestone 1"
-permalink: /assignments/assignment1
-categories: assignments
-
-
----
+# Assignment 1 Collection View
 
 * **Worth**: 10%
 * 📅 **Due**: March 21, 2024 @ 23:59.

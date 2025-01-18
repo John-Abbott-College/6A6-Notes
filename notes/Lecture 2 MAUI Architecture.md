@@ -1,9 +1,5 @@
----
-layout: post
-title: "Lecture 2: .NET MAUI"
-permalink: /lectures/intro-maui
-categories: notes
----
+# Introduction to MAUI
+
 This lecture is are based on: 
 [Microsoft's documentation](https://learn.microsoft.com/en-ca/dotnet/maui/what-is-maui?view=net-maui-8.0) 
 
