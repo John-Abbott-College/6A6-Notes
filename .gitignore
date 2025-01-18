@@ -6,3 +6,4 @@
 .vscode?
 .obsidian
 .obsidian?
+./node_modules
