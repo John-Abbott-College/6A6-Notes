@@ -158,8 +158,10 @@
       // -----------------------------------------------------------------
       name: 'Application Development III',
       homepage: 'README.md',
-      loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
-      loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar || false),
+      // loadSidebar: !(getURLParameterByName(['standalone', 'embedded']) || standalone || false),
+      // loadNavbar: !(getURLParameterByName(['standalone', 'embedded']) && !(getURLParameterByName('navbar')) || standalone && !navbar || false),
+      loadSidebar: true,
+      loadNavbar: true,
       mergeNavbar: false,
       externalLinkTarget: standalone ? '_top' : (getURLParameterByName(['standalone', 'embedded'], '_top', '_blank')),
       loadFooter: (getURLParameterByName('footer') || footer || false),
@@ -170,8 +172,8 @@
       maxLevel: 3,
       // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
       subMaxLevel: 3,
-      hideSidebar: (getURLParameterByName(['standalone', 'embedded']) || standalone),
-
+      // hideSidebar: (getURLParameterByName(['standalone', 'embedded']) || standalone),
+      hideSidebar: false,
       // PLUGIN SETTINGS
       // -----------------------------------------------------------------
       pagination: {
@@ -285,7 +287,7 @@
                 .replace('raw.githubusercontent.com', 'github.com')
                 .replace(/\/master/, '/blob/master')
             } else {
-              url = gitLinkRepoURL + '/blob/main/docs/' + vm.route.file
+              url = gitLinkRepoURL + '/blob/main/' + vm.route.file
             }
             var editHtml = '[:memo:' + editThisPageLinkText + '](' + url + ' ":class=align-items-vertically")\n'
 
