@@ -1,4 +1,4 @@
-* [Topics](/notes/notes_main.md)
-* [Labs](/labs/labs_main.md)
-* [Assignments](assignments_main.md)
-* [Final Project]()
+* [Topics](/notes/notes_main)
+* [Labs](/labs/labs_main)
+* [Assignments](/assignments/assignments_main)
+* [Final Project](/project/project_main)
