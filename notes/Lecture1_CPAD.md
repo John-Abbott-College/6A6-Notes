@@ -12,7 +12,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ## Main Problem
 
-<img src="/images/cpad/img1_mainproblem.png" width="400" style="vertical-align: middle;" title="Main issue with native apps"/>
+<img src="images/cpad/img1_mainproblem.png" width="400" style="vertical-align: middle;" title="Main issue with native apps"/>
 
 
 *Main issue with native apps*
@@ -25,7 +25,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 - The process is repeated for each operating system.
 
-| <img src="/images/cpad/img4_nativeAppsGen.png"/> |
+| <img src="images/cpad/img4_nativeAppsGen.png"/> |
 | :------------------------------------------------: |
 |       *Cross platform programming languages*       |
 
@@ -84,7 +84,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ### Why Native or Why not Native?
 
-| <img src="/images/cpad/img2_advantages.png" height="400" /> |
+| <img src="images/cpad/img2_advantages.png" height="400" /> |
 | :----------------------------------------------------------: |
 |                     *Advantages of CPAD*                     |
 
@@ -156,7 +156,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
   
 
 
-  | <img src="/images/cpad/img3_FlutterGen.png"  height=300 style="margin-bottom: 20px;"/> |
+  | <img src="images/cpad/img3_FlutterGen.png"  height=300 style="margin-bottom: 20px;"/> |
   | :----------------------------------------------------------: |
   |                    *Flutter Architecture*                    |
 
@@ -200,7 +200,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
     
 
 
-| <img src="/images/cpad/img6_hybridGen.png" height=250/> |
+| <img src="images/cpad/img6_hybridGen.png" height=250/> |
 | :-------------------------------------------------------: |
 |           *Hybrid Native Apps Building Process*           |
 
@@ -226,13 +226,13 @@ The following notes were based on Matt Milner's course on .NET MAUI
   - **React Native**: Open source. Similar to MAUI, react views are created and react handles it to generate native controls. It was created by facebook using a command-line interface (based on Javascript, React.js, ECMAScript, JSX)
 
 
-| <img src="/images/cpad/img10_ReactNativeGen.png" height=300/> |
+| <img src="images/cpad/img10_ReactNativeGen.png" height=300/> |
 | :----------------------------------------------------------: |
 |                 *React Native Architecture*                  |
 
   - **MAUI (previously Xamarin)**: The same business logic  (written in C#) for all platforms, UI code (written in C#/XAML) will be adapted by MAUI for the various targets. (XAML controls -> Native controls). It has an excellent performance, near native app performance.
 
-| <img src = "/images/maui_intro/maui_cpad.png" height=300/> |
+| <img src = "images/maui_intro/maui_cpad.png" height=300/> |
 | :----------------------------------------------------------: |
 |           *.NET Multi-platform App UI (.NET MAUI)*           |
 
@@ -266,11 +266,11 @@ The following notes were based on Matt Milner's course on .NET MAUI
 - The programming language itself is cross-platform.
 - Includes multiple SDKs for the various platforms.
 
-| <img src="/images/cpad/CPADprocess.png" /> |
+| <img src="images/cpad/CPADprocess.png" /> |
 | :--------------------------------------------------------: |
 |                  *CPAD Building Process*                   |
 
-| <img src="/images/cpad/CPADTypes.png"/> |
+| <img src="images/cpad/CPADTypes.png"/> |
 | :-----------------------------------------------------: |
 |                    *CPAD App Types*                     |
 
@@ -287,7 +287,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ## Popular Cross-platform Frameworks
 
-<img src="/images/cpad/Cordova.png" width="50%" />
+<img src="images/cpad/Cordova.png" width="50%" />
 
 - Opensource `Hybrid` app development framework by Apache.
   - Single codebase that generates native Android and iOS apps.
@@ -304,7 +304,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ---
 
-<img src="/images/cpad/ReactNative.webp" width="50%" />
+<img src="images/cpad/ReactNative.webp" width="50%" />
 
 - Opensource `Cross-platform Native` app framework.
   - Single codebase that generates native Android and iOS apps.
@@ -318,7 +318,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ---
 
-<img src="/images/cpad/Flutter.webp" width="40%" />
+<img src="images/cpad/Flutter.webp" width="40%" />
 
 - Opensource `Cross-platform Native` app framework by Google.
 - Single codebase that generates:
@@ -332,7 +332,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ---
 
-<img src="/images/cpad/Ionic.png" width="35%" />
+<img src="images/cpad/Ionic.png" width="35%" />
 
 - Opensource `PWA` app framework.
 - Single codebase that generates mobile apps.
@@ -346,8 +346,8 @@ The following notes were based on Matt Milner's course on .NET MAUI
 ---
 
 <div style="text-align:center;">
-    <img src="/images/maui_intro/maui.jpg" width="30%" class="inline-img"/>
-    <img src="/images/cpad/apps.png" width="40%" class="inline-img" />
+    <img src="images/maui_intro/maui.jpg" width="30%" class="inline-img"/>
+    <img src="images/cpad/apps.png" width="40%" class="inline-img" />
 </div>
 
 
@@ -361,7 +361,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ## Other frameworks worth mentioning
 
-<img src="/images/cpad/Solar2D.svg" width="35%" />
+<img src="images/cpad/Solar2D.svg" width="35%" />
 
 - Opensource Cross-platform.
 - 2D Gaming engine.
@@ -373,7 +373,7 @@ The following notes were based on Matt Milner's course on .NET MAUI
 
 ---
 
-<img src="/images/cpad/CodenameOne.png" width="35%" />
+<img src="images/cpad/CodenameOne.png" width="35%" />
 
 - Opensource Cross-Platform app framework. 
 - For `Java` lovers.
