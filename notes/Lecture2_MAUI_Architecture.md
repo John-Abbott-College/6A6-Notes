@@ -26,7 +26,7 @@ This lecture is are based on:
 - Uses a unified interface called .NET Base to interact with each of these frameworks.
 - The business logic and common UI elements of your App will be using this interface.
 
-<img src="{{site.baseurl}}/images/maui_intro/maui_architecture.png" height=500 />
+<img src="images/maui_intro/maui_architecture.png" height=500 />
 
 - For Android, iOs and MacOs, the execution environment is implemented in Mono.
 - For Windows, the execution environement is .NET CoreCLR.
@@ -68,7 +68,7 @@ According to Microsoft's latest [documentation](https://learn.microsoft.com/en-u
 ### Overview of a MAUI Project
 
 - Platforms: This folder contains platform specific code:
-  <img src="{{site.baseurl}}/images/maui_intro/project_explorer.png" />
+  <img src="images/maui_intro/project_explorer.png" />
   
 - Resources: this folder contains all images, fonts, etc. are stored. MAUI will be responsible of embedding this content to each platform with its specificity.  
 
@@ -83,7 +83,7 @@ According to Microsoft's latest [documentation](https://learn.microsoft.com/en-u
 - It's also used in WPF and UWP.
 - Extension is `.xaml`
 - For every xaml file, you have an associated C# code behind with the same name:
-<img src="{{site.baseurl}}/images/maui_intro/MainPage.png" />
+<img src="images/maui_intro/MainPage.png" />
 
 Example `MainPage.xaml`:
 - Contains the definition of the main page.
@@ -192,7 +192,7 @@ public partial class MainPage : ContentPage
 - One on the most convinient features of .NET MAUI Xaml is Hot reload which enables you to visualize modifications of the UI without stopping and re-building the app.
 - Topic of Lab0.
 
-<img src="{{site.baseurl}}/images/maui_intro/hot_reload.png" />
+<img src="images/maui_intro/hot_reload.png" />
 
 The hot reload feature works for debugging on: 
 - Windows Machine (WinUI)
