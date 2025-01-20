@@ -19,20 +19,20 @@ It's recommended that you use the school PCs to complete the labs because they h
 1. Open Visual Studio 2022
 
 2. Create a MAUI App from the project templates
-   <img src="../images/maui_intro/maui_template.png" height=500 />
+   <img src="images/maui_intro/maui_template.png" height=500 />
 
 3. Choose a name and location for your new MAUI app.
 
 4. Select the latest .NET framework available. It should be .NET 6.0 or 8.0 (Long term Support)
 
 5. Press the Play button to build the project on your Windows computer:
-   <img src="../images/maui_intro/run_windows.png" />
+   <img src="images/maui_intro/run_windows.png" />
 
 6. You should now see the MAUI template project app:
-   <img src="../images/maui_intro/Maui_windows.png" />
+   <img src="images/maui_intro/Maui_windows.png" />
 
 7. On File Explorer, navigate to your `<project folder>/bin/Debug/`, you should see multiple folders on which your app can be deployed. For now, the only folder that contains a deployed solution is the Windows folder:   
-   <img src="../images/maui_intro/debug_folder.png" />
+   <img src="images/maui_intro/debug_folder.png" />
 
 
 - For each platform used when debugging, an executable is created for the associated platform.
@@ -72,7 +72,7 @@ The android emulator created by Google will allow us to simlulate the hardware o
      - `Text`: `"Exercice 1"`
      - `Clicked`: `"Btn_Exercice2_Clicked"`
 
-<img src="../images/labs_images/lab0_main_page.png" height=300/>
+<img src="images/labs_images/lab0_main_page.png" height=300/>
 
 ### Adding other pages
 #### Steps: 
