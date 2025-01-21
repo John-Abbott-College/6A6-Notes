@@ -1,6 +1,6 @@
 # MAUI Layouts
 
-[Demo made in class]()
+<!-- [Demo made in class]() -->
 
 ## Vertical and Horizontal Stack Layouts
 
@@ -23,7 +23,7 @@
   - `HorizontalOptions`: similar to the vertical options but for the horizontal axis.
   - `VerticalStackLayout` and `HorizontalStackLayout` can be nested:
 
-<img src="../images/maui_layouts/layouts_stack.png" height="500" />
+<img src="images/maui_layouts/layouts_stack.png" height="500" />
 
 ## Grid Layout
 
@@ -64,7 +64,7 @@
 
   - **Note about text alignment**:  By default text is wrapped in boundaries which are then aligned relative to the grid. To obtain the correct alignment, the Text has to be aligned relative to those parent boundaries using `TextAlignment` (`Center`,`End`,`Start`)  
 
-    <img src="../images/maui_layouts/layouts_grid.png" height="500" />
+    <img src="images/maui_layouts/layouts_grid.png" height="500" />
 
 ## Absolute Layout
 
@@ -88,8 +88,8 @@
   - example "1,1,0.5,0.5" :
 
     <div>
-        <img src="../images/maui_layouts/layouts_absolute_all.png" height="500" />
-        <img src="../images/maui_layouts/layouts_absolute_proportional.png" height="500" />
+        <img src="images/maui_layouts/layouts_absolute_all.png" height="500" />
+        <img src="images/maui_layouts/layouts_absolute_proportional.png" height="500" />
 
     </div>
 
@@ -130,8 +130,8 @@ Here are a few properties to explore:
   </div>
 
   <div>
-      <img src="../images/maui_layouts/layouts_flex.png" height="500" />
-      <img src="../images/maui_layouts/layouts_flex_win.png" height="300" />
+      <img src="images/maui_layouts/layouts_flex.png" height="500" />
+      <img src="images/maui_layouts/layouts_flex_win.png" height="300" />
   </div>
   
   

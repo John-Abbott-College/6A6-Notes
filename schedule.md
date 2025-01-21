@@ -7,12 +7,13 @@ If you miss a class, you can catch up by completing the learning activities done
     - Rules on using AI
     - Debate game
 - [What are CPADs](/notes/Lecture1_CPAD.md)
+- Lab0: Setup
 - Team activity: 
     - Research an app dev framework
 
 ## Week2
 - [Introduction to MAUI](/notes/Lecture%202%20MAUI%20Architecture.md)
-- Lab0: Setup
+
 - [MAUI -Layouts]
 - Lab1: Social Media Layouts
 

@@ -20,7 +20,7 @@
 
   - There are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a `StaticResource` or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
 
-| <img src="{{site.baseurl}}/images//data_binding/img1_databinding.jpg" width=850 /> |
+| <img src="images/data_binding/img1_databinding.jpg" width=850 /> |
 | :----------------------------------------------------------: |
 |                        *Data Binding*                        |
 
