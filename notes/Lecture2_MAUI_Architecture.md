@@ -35,15 +35,14 @@ This lecture is are based on:
 
 According to Microsoft's latest [documentation](https://learn.microsoft.com/en-us/dotnet/maui/supported-platforms?view=net-maui-8.0):
 
-| Platform | Min Version|
-| :--------------------:|
-| Windows  |    10.1809    |
-| Mac      |    10.15   |
-| Android  |    5.0     |
-| iOS      |    11      |
-| :--------------------:|
 
 
+| Platform | Min Version |
+| -------- | ----------- |
+| Windows  | 10.1009     |
+| MacOS    | 10.15       |
+| iOS      | 11          |
+| Android  | 5.0         |
 
 
 
