@@ -15,9 +15,13 @@
   <!-- Themeable Simple light + dark theme (uncomment to use, and comment out the above loading of Simple theme) -->
   <!-- <link rel="stylesheet" media="(prefers-color-scheme: light)"
     href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
-  <link rel="stylesheet" media="(prefers-color-scheme: dark)"
-    href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+  <!-- <link rel="stylesheet" media="(prefers-color-scheme: dark)"
+    href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"> -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/style.min.css" type="text/css">
 
+    <!-- docsify-themeable styles-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" title="light">
+    <link rel="stylesheet alternative" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css" title="dark">
   <link rel="stylesheet" href="assets/css/theme.css">
   <link rel="stylesheet" href="assets/css/custom.css">
 
@@ -34,6 +38,17 @@
     rel="stylesheet">
 
   <style>
+    img {
+      border-radius: 5px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .inline-img {
+      border-radius: 8px;
+      display: inline;
+      margin: auto;
+    }
     :root {
       --base-font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
       --base-line-height: 1.4;
@@ -171,7 +186,7 @@
       // SIDEBAR NAVIGATION
       // -----------------------------------------------------------------
       auto2top: true,
-      maxLevel: 3,
+      maxLevel: 1,
       // Set subMaxLevel to 0 to remove automatic display of page table of contents (TOC) in Sidebar
       subMaxLevel: 3,
       // hideSidebar: (getURLParameterByName(['standalone', 'embedded']) || standalone),
@@ -416,11 +431,23 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
 
   <!-- Search Box Plugin -->
-  <!--  <script src="assets/js/search.min.js"></script> -->
+   <script src="assets/js/search.min.js"></script>
+
+  <!-- C# -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-csharp.min.js"></script>
+  
+  <!-- Time Updater -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-updated@1/src/time-updater.min.js"></script>
+  
+  <!-- Copy to clipboard button on code blocks -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  
+  <!-- Zoom into images -->
+  <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
 
   <!-- Font Awesome Plugin -->
   <script src="assets/js/docsify-fontawesome.min.js"></script>
-
+  
   <!-- Tabs Plugin-->
   <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1/dist/docsify-tabs.min.js"></script>
 
@@ -456,6 +483,17 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-swift.min.js"></script>
+
+  <!-- toggle Light/Dark mode -->
+  <script
+    src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/main.min.js"
+    type="text/javascript">
+  </script>
+
+<script
+    src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@3/dist/docsify-themeable/index.min.js"
+    type="text/javascript">
+</script>
 
 </body>
 

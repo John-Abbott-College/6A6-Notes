@@ -1,5 +1,6 @@
-- [**Schedule**](schedule)
-
+- **Notes**
+  - [**CPAD**](notes/Lecture1_CPAD.md)
+  - [**MAUI Intro**](notes/Lecture2_MAUI_Architecture.md)
 
 - **LMS Links**
   - [![Class Teams](https://icongr.am/material/microsoft-teams.svg?size=16&color=currentColor)Class Teams](https://teams.microsoft.com/l/team/19%3AO6W4FAHaNWqDTgJvw9R34xKNKoRiwL3EP1GEdig7ATk1%40thread.tacv2/conversations?groupId=d427b10f-cfd1-4e14-ad02-c727ffe38b15&tenantId=22c202c2-382c-447b-a023-d0a866d1d426)
