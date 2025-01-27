@@ -3,41 +3,64 @@
 This lab will help you get familiar with the various MAUI layouts and controls. 
 
 - 📝 **Worth:** 2%
-- 📅 **Due:** Friday Feb 9, 2023 @End of class
+- 📅 **Due:** Friday Feb 7, 2025 @End of class
 - 🕑 **Late submissions:** 3 days maximum. 10% penalty per day.
-- 📥 **Submission:** In class 
+- 📥 **Submission:** Demo In class (1%) + Code submission on Github
 
 
 
 ## Objectives
 
 - Create the UI skeleton for a social media app
-- Use a Grid Layout
-- Use a Vertical and Horizontal Stack Layout
-- Use the Absolute Layout
+- Getting familiar with MAUI's basic layouts
+  - Grid Layout
+  - Vertical and Horizontal Stack Layout
+  - Absolute Layout
+
 
 
 
 ## Create a MAUI Project
 
 - Create a .NET MAUI Project
+
 - Name: **Lab1**
-- ⚠️ IMPORTANT USE **.NET** **7** 
+
+- ⚠️ IMPORTANT USE **.NET** **8**  
+
+  > Note: This version is installed on the school computer and the one tested for the instructions below.
 
 #### Target platform
 
-For this lab we will be testing the app on two different form factors:
+For this lab we will be testing the app on two different platforms with different form factors:
 
-- Android Emulator: Pixel 5 - API 34
-- Windows Machine
+- Android Emulator of your choice: Google Pixel 5, 6 or 7
+
+> If you wish to develop on a Mac computer and test on the iOS emulator, the instructions shouldn't be different. But I haven't tested all the steps on iOS.
+
+
 
 ## Modify the Main Page
 
 - Modify the main page to include:
 
-  - A `Label`: `Text`=`"Learning About Layouts"`, `FontSize`=`"Title"`. Make sure the Label is centered horizontally.
+  - A `Title`: `"MauiSocial"`. This can be set in the opening tag of the `ContentPage`:
+
+    ```xml
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 Title="Maui Social"
+                 x:Class="MauiSocial.MainPage">
+    ```
+
+    
+
+  - A `Label`: `Text`=`"Learning About Layouts"`, `Style="{StaticResource SubHeadline}"`. Make sure the Label is centered horizontally.
+
   - A `button`: `Text`=`"Profile Page"`, `Clicked` (create a new event handler)
+
   - A `button`: `Text`=`"Post Page"`, `Clicked` (create a new event handler)
+
   - A `button`: `Text`=`"Comment Page"`, `Clicked` (create a new event handler)
 
   
@@ -48,29 +71,32 @@ For this lab we will be testing the app on two different form factors:
 
 - Rename your event handlers so that they follow the standard ***Btn_ButtonName_Clicked***
 
+- Remove the unused code in the code behind
 
-#### App Navigation
 
-- The app consists of three main pages:
-  - Profile Page
-  - Post Page
-  - Comment Page
+## App Navigation
 
 - We will use the basic stack navigation we have used so far in this course
 
+- Create a folder called Views. Add newly created pages in this folder.
 
+- Add three new `ContentPage.xaml` with the following names:
+  
+  - `ProfilePage.xaml`
+  - `PostPage.xaml`
+  - `CommentPage.xaml`
+  
+- Use the event handlers created in the `MainPage.xaml.cs` to push a new instance of each page as done in Lab0.
 
-
-
-> Create a folder called Views. Add newly created pages in this folder.
+  
 
 
 
 ## Modify the Profile Page
 
-- Warning! Make sure to use .NET 7 because Microsoft 
-
 - Download the following [sample](../files/Lab1_sample_images.zip) images and place them into your  `Resources > Images` folder
+
+  > Note: Place all the images at the root of the `Images` folder, if you wish to keep them organized in subfolders, you must add each subfolder content to app embedded resources 
 
 - Modify the default `ProfilePage.xaml` to include the following:
 
@@ -124,15 +150,15 @@ For this lab we will be testing the app on two different form factors:
   - (4,0) to (5,2) `Image`
     - `Source` : use the sample images to populate the mosaic
     - `Aspect`="AspectFill"
+
   
+
   
+
   
-  
-  
-  
-  
+
   This is what your layout should look like
-  
+
   
 
 <img src="../images/labs_images/Lab1/Lab1_grid.png" height=400 class="inline-img"/>

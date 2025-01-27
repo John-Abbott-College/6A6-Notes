@@ -121,18 +121,16 @@ Here are a few properties to explore:
 
 - `Wrap`: indicates if the items should be laid on multiple axis (values: `NoWrap`, `Wrap`, `Reverse`)
 
-- `AlignItems`: Defines how the items are distributed in the parent **within the same axis** (values: `Start`, `End`,`Center`,`Stretch`)
+- `JustifyContent`: Defines how the items are distributed in the parent **within the same axis** (values: `Start`, `End`,`Center`,`SpaceAround`, `SpaceBetween`, `SpaceEvenly`)
 
-- `AlignContent`: Defines how the items layed on multiple lines are distributed in the parent 
+- `AlignContent`: Defines how the items laid on multiple lines are distributed in the parent (values: `Start`, `End`, `Center`,`SpaceAround`, `SpaceBetween`, `SpaceEvenly`, `Stretch`)
 
   <div>
-  
   </div>
-
+  
   <div>
       <img src="images/maui_layouts/layouts_flex.png" height="500" />
-      <img src="images/maui_layouts/layouts_flex_win.png" height="300" />
-  </div>
+      <img src="images/maui_layouts/layouts_flex_win.png" height="300" /></div>
   
   
 

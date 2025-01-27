@@ -13,8 +13,7 @@ If you miss a class, you can catch up by completing the learning activities done
 
 ## Week2
 - [Introduction to MAUI](/notes/Lecture%202%20MAUI%20Architecture.md)
-
-- [MAUI -Layouts]
+- [MAUI -Layouts](notes/Lecture3_MAUILayouts.md)
 - Lab1: Social Media Layouts
 
 
