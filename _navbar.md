@@ -7,7 +7,8 @@
 
 * Labs
     - [Lab0](labs/lab0.md)
-
+    - [Lab1](labs/lab1.md)
+    
 * Assignments
     - Coming soon
 * Project

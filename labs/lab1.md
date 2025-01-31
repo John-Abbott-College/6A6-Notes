@@ -21,21 +21,24 @@ This lab will help you get familiar with the various MAUI layouts and controls.
 
 ## Create a MAUI Project
 
-- Accept the Github classroom lab
+- Accept the Github classroom lab assignment:
 
-- Clone the repository created for this effect
+  - [Section1](https://classroom.github.com/a/Y-1FB5Kb)
 
-- Create a .NET MAUI Project
+  - [Section 2](https://classroom.github.com/a/doCkLYu4)
+
+- Clone your repository created for this effect
+
+- The repo already contains a .NET MAUI Project
 
 - Name: **MauiSocial**
 
-- ⚠️ IMPORTANT USE **.NET** **8**  
+- ⚠️ IMPORTANT Keep version **.NET** **8**  
 
   > Note: This version is installed on the school computer and the one tested for the instructions below.
 
 - Note that the  `Resources > Images` folder contains button images and icons
 
-  >  Note: Place all the images at the root of the `Images` folder, if you wish to keep them organized in subfolders, you must add each subfolder content to app embedded resources 
 
 #### Target platform
 
