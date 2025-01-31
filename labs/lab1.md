@@ -5,36 +5,44 @@ This lab will help you get familiar with the various MAUI layouts and controls.
 - 📝 **Worth:** 2%
 - 📅 **Due:** Friday Feb 7, 2025 @End of class
 - 🕑 **Late submissions:** 3 days maximum. 10% penalty per day.
-- 📥 **Submission:** Demo In class (1%) + Code submission on Github
-
-
+- 📥 **Submission:** Demo In class (1%) + Code submission on Github (1%)
 
 ## Objectives
 
-- Create the UI skeleton for a social media app
-- Getting familiar with MAUI's basic layouts
+- Create the UI skeleton for a social media app using `XAML`
+- Review concepts such as button event handlers, display prompts and action sheets.
+- Get familiar with MAUI's basic layouts
   - Grid Layout
   - Vertical and Horizontal Stack Layout
-  - Absolute Layout
+  - Flex Layout
 
 
 
 
 ## Create a MAUI Project
 
+- Accept the Github classroom lab
+
+- Clone the repository created for this effect
+
 - Create a .NET MAUI Project
 
-- Name: **Lab1**
+- Name: **MauiSocial**
 
 - ⚠️ IMPORTANT USE **.NET** **8**  
 
   > Note: This version is installed on the school computer and the one tested for the instructions below.
 
+- Note that the  `Resources > Images` folder contains button images and icons
+
+  >  Note: Place all the images at the root of the `Images` folder, if you wish to keep them organized in subfolders, you must add each subfolder content to app embedded resources 
+
 #### Target platform
 
-For this lab we will be testing the app on two different platforms with different form factors:
+For this lab we will be testing the app on :
 
-- Android Emulator of your choice: Google Pixel 5, 6 or 7
+- Google Pixel 5, 6 or 7
+- Tablet 420 dpi 8in
 
 > If you wish to develop on a Mac computer and test on the iOS emulator, the instructions shouldn't be different. But I haven't tested all the steps on iOS.
 
@@ -57,130 +65,50 @@ For this lab we will be testing the app on two different platforms with differen
 
   - A `Label`: `Text`=`"Learning About Layouts"`, `Style="{StaticResource SubHeadline}"`. Make sure the Label is centered horizontally.
 
-  - A `button`: `Text`=`"Profile Page"`, `Clicked` (create a new event handler)
-
   - A `button`: `Text`=`"Post Page"`, `Clicked` (create a new event handler)
 
-  - A `button`: `Text`=`"Comment Page"`, `Clicked` (create a new event handler)
+  - A `button`: `Text`=`"Profile Page"`, `Clicked` (create a new event handler)
+
+  - A `button`: `Text`=`"Mosaic Page"`, `Clicked` (create a new event handler)
 
   
 
   
 
-  <img src="../images/labs_images/Lab1/Lab1_MainPage_threebuttons.png" height=400/>
+  <img src="images/labs_images/Lab1/Lab1_MainPage_threebuttons.png" height=400/>
 
 - Rename your event handlers so that they follow the standard ***Btn_ButtonName_Clicked***
 
-- Remove the unused code in the code behind
+- Remove the unused code in the code behind of the `MainPage.xaml`
 
 
 ## App Navigation
 
-- We will use the basic stack navigation we have used so far in this course
+- We will use basic stack navigation.
 
-- Create a folder called Views. Add newly created pages in this folder.
+- Create a folder called Views. 
+
+- Add all newly created pages in this folder.
 
 - Add three new `ContentPage.xaml` with the following names:
   
-  - `ProfilePage.xaml`
   - `PostPage.xaml`
-  - `CommentPage.xaml`
+  - `ProfilePage.xaml`
+  - `MosaicPage.xaml`
   
-- Use the event handlers created in the `MainPage.xaml.cs` to push a new instance of each page as done in Lab0.
-
-  
-
-
-
-## Modify the Profile Page
-
-- Download the following [sample](../files/Lab1_sample_images.zip) images and place them into your  `Resources > Images` folder
-
-  > Note: Place all the images at the root of the `Images` folder, if you wish to keep them organized in subfolders, you must add each subfolder content to app embedded resources 
-
-- Modify the default `ProfilePage.xaml` to include the following:
-
-  - Remove the default `VerticalStackLayout` and replace it with a `Grid`
-  - The `Grid` must have the following specs:
-    - Have as parent the `ScrollView`
-    - Columns: 3, adaptable to the screen size
-    - Rows : 10, adaptable to the screen size
-    - The first row must have a height that is 2 x bigger than all the other rows.
-    - `Padding`: 10
-    - `RowSpacing`: 5
-    - `ColumnSpacing`: 5
-
-- Add the following items to the following positions ***(Row,Column)***:
-
-  - (0,0)`Image`:
-    - `Source` = "dotnet_bot_jetpack.png"
-    - `MaximumHeightRequest`="300"
-    
-  - (0,0)`Label`:
-    - `Text` = "Dotnet Bot"
-    - `FontSize`="Medium"
-    -  `FontAttributes`="Bold"
-    - `VerticalTextAlignment`="End"
-    
-  - (0,1) `Grid`: 
-    - 3 columns x 1 row with three labels
-      - (0,0): "6 Posts"
-      - (0,1): "3.2M Followers"
-      - (0,2): "150 Following"
-    
-      > Hint: Use  `&#10;` to end a line.
-    
-  - (1,0)`Label`
-    - `Text`="I am a simple bot trying to live my dreams."
-    - `Grid.ColumnSpan`=3
-    
-  - (2,0)`Button`:
-    - `Text`="Follow"
-    - `MaximumHeightRequest`="60"
-    
-  - (2,1)`Button :`
-    - `Text`="Message"
-    - `MaximumHeightRequest`="60"
-    
-  - (3,0) `Border`
-    - `Grid.ColumnSpan`="3"
-    - `Stroke`="LightGray" 
-    - `MaximumHeightRequest`="3"
-    
-  - (4,0) to (5,2) `Image`
-    - `Source` : use the sample images to populate the mosaic
-    - `Aspect`="AspectFill"
+- Use the event handlers created in the `MainPage.xaml.cs` to push a new instance of each page.
 
   
-
-  
-
-  
-
-  This is what your layout should look like
-
-  
-
-<img src="../images/labs_images/Lab1/Lab1_grid.png" height=400 class="inline-img"/>
-
-<img src="../images/labs_images/Lab1/Lab1_grid_win.png" height=350 class="inline-img" /> 
-
-
-
-
-
-
-
 
 ## Modify the Post Page
 
-The post page contains all the details of a social media post. To keep it simple, we will only display 1 post and 1 comment:
+The post page contains all the details of a social media post. To keep it simple, we will only display 1 post and 1 comment for now.
 
-<img src="../images/labs_images/Lab1/Lab1_postpage_verticalstack.png" height=400/>
+<img src="images/labs_images/Lab1/Lab1_postpage_verticalstack.png" height=400/>
 
 
 
-This page should be composed of a main `VerticalStackLayout` centered on its parent and separating each child by 5 pixels. It will contain the following information:
+This page should be composed of a main `VerticalStackLayout`. It will contain the following information:
 
 - Information about the owner
 - Post image
@@ -207,7 +135,7 @@ The header of the post contains the information about the owner of the post. It 
 This area is where the image should be added in the main `VerticalStackLayout`:
 
 - `Image`:
-  - `Source`="fall.png" (or any other sample photos)
+  - `Source`="fall.png" (or any other sample photo)
   - `Aspect`="AspectFill"
 - `Label`:
   - `x:Name`="LikesLabel"
@@ -256,60 +184,11 @@ This area is made up of another `HorizontalStackLayout` containing three `ImageB
 
   - `Clicked`: "Btn_Share_Clicked" (add a new event handler)
 
-#### Like Event Handler
-
-- In the code behind, add a counter for the number of likes and make sure the likes label is updated every time the like button is clicked:
-
-
-
-```csharp
-int likesCount = 0;
-///...
-private void Btn_LikeButton_Clicked(object sender, EventArgs e)
-{
-    ///...
-}
-```
-
- 
-
-#### Share Event Handler
-
-- Modify the signature of the event handler to make it run asynchronously:
-
-```csharp
-private async void Btn_ShareButton_Clicked(object sender, EventArgs e)
-{
-   ///\TODO...
-}
-```
-
-
-
-- Show a `DisplayActionSheet` to allow the user to select the platform then show `DisplayAlert` to confirm that the post was shared on the selected platform. Read more about [MAUI Pop-ups](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pop-ups?view=net-maui-7.0)
-
-> Hint: Use the `await` keyword to save the returned user selection in a `string` variable.
->
-
-<div>
-    <img src="../images/labs_images/Lab1/Lab1_share_1.png" height=400/>
-    <img src="../images/labs_images/Lab1/Lab1_share_2.png" height=400/>
-</div>
-
-
-
-#### Comment Event Handler
-
-For simplicity:
-
-- push a `CommentPage` on the stack (similar to the `MainPage` Comment Page Button)
-
 #### Comment section:
 
 The comment section should contain a single `HorizontalStackLayout` with the following children:
 
-- `Image`:
-
+- `Image`:		
   - `Source`="dog.png"
 
 - `Border`:
@@ -326,73 +205,167 @@ The comment section should contain a single `HorizontalStackLayout` with the fol
       - `Text`="Cool! the colors are so bright!"
       - `FontSize`="Medium" 
 
+#### Like Event Handler
+
+- In the code behind, add a counter for the number of likes and make sure the likes label is updated every time the like button is clicked:
+
+
+
+```csharp
+int likesCount = 0;
+///...
+private void Btn_Like_Clicked(object sender, EventArgs e)
+{
+    ///...
+}
+```
+
+ 
+
+#### Share Event Handler
+
+- Modify the signature of the event handler to make it run asynchronously:
+
+```csharp
+private async void Btn_Share_Clicked(object sender, EventArgs e)
+{
+   ///\TODO...
+}
+```
+
+
+
+- Show a `DisplayActionSheet` to allow the user to select the platform then show `DisplayAlert` to confirm that the post was shared on the selected platform. Read more about [MAUI Pop-ups](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/pop-ups?view=net-maui-7.0)
+
+> Hint: Use the `await` keyword to save the returned user selection in a `string` variable.
+
+<div>
+    <img src="images/labs_images/Lab1/Lab1_share_1.png" height=400/>
+    <img src="images/labs_images/Lab1/Lab1_share_2.png" height=400/>
+</div>
+
+- Show a `DisplayAlert` to confirm that the post is shared.
+
+
+#### Comment Event Handler
+
+For simplicity:
+
+- Show a `DisplayPromptAsync` to allow the user to type in a comment and click a "Send" button
+
+  <img src="images/labs_images/Lab1/Lab1_comment_popup.png" height=300/>
+
+
+
+## Modify the Profile Page
+
+This page should use a `Grid` layout to organize information on a profile page as shown in the wireframe below.
+
+<img src="images/labs_images/Lab1/Lab1_wireframe_1.png" height="300">
+
+
+
+The page should contain the following elements:
+
+- Profile Image at the top left
+
+- Profile Name in bold underneath the profile image
+
+- A bio sentence underneath the profile name
+
+- The number of posts, followers and following laid out horizontally at the top right.
+
+- Two buttons: "Edit Profile" and "Share Profile"
+
+  <img src="images/labs_images/Lab1/Lab1_wireframe_2.png" height="200">
+
+- Images of the posts layout out within each cell of the Grid.
+
+
+
+### Defining the Grid
+
+- Modify the default `ProfilePage.xaml` to include the following:
+
+  - Remove the default `VerticalStackLayout` and replace it with a `Grid`
+  - The `Grid` must have the following specs:
+    - Have as parent the `ScrollView`
+    - Columns: 3, adaptable to the screen size
+    - Rows : 10, adaptable to the screen size
+    - The first row must have a height that is 2 x bigger than all the other rows.
+    - `Padding`: 10
+    - `RowSpacing`: 5
+    - `ColumnSpacing`: 5
+
+### Profile information section
+
+- Add the following element in the `Grid` based on the wireframe:
+  - **Profile Image**
+    - `Source` = "dotnet_bot_jetpack.png"
+    - `MaximumHeightRequest`="300"
+  - **Profile Name**
+    - `Text` = "Dotnet Bot"
+  - **Number of Posts, Followers and Followings**:
+    - Use another layout to organize these three labels within the main Grid
+    - If needed, use  `&#10;` to end a line.
+  - **Follow and Message Buttons**:
+    - Use another layout to organize these buttons within the main Grid
+
+
+### Images Grid
+
+- **Post images**:
+
+  - Each image should fill a cell in the Grid
+
+  - Set the `Aspect`="AspectFill" 
+
+  - You may use the following image URL generator: https://picsum.photos/
+
+  - To make different images, simply modify the dimensions of the image as such: 
+
+    - https://picsum.photos/202/202.jpg
+    - https://picsum.photos/224/224.jpg
+    - https://picsum.photos/256/256.jpg
+
     
 
-## Modify the Comment Page
 
-This page is composed of a title section at the top of the screen, a large middle section where the comments will appear and finally a text entry at the bottom part of the screen. This page should be composed of an `AbsoluteLayout`containing the following items with the given bounds: 
 
-> Hint: To combine two Absolute Layout flags, separate them by a comma: example: AbsoluteLayout.LayoutFlags = "HeightProportional, XProportional"
+**Here is an example of the final layout:**
 
-- `Label` 
 
-  - x= 50%
-  - y= 1%
-  - Width = 200 pixels
-  - Height = 100 pixels
-  - `Text`="Comments"
-  - `FontSize`="Medium"
-  - `HorizontalTextAlignment`="Center"
 
-- `Border`
+<img src="images/labs_images/Lab1/Lab1_grid.png" height=400 class="inline-img"/>
 
-  - x= 50%
-  - y= 5%
-  - Width = 100%
-  - Height = 3 pixels
-  -  `BackgroundColor`="Gray" 
+- Test is out on a different screen size.
 
-  
+<img src="images/labs_images/Lab1/Lab1_grid_win.png" height=350 class="inline-img" /> 
 
-- `VerticalStackLayout`
 
-  - x= 50%
-  - y= 35%
-  - Width = 100%
-  - Height = 80%
-  - child :
-    - `HorizontalStackLayout` (same as the comment in the [`PostPage`](# Comment section)
 
-- `Border`
+> Note: The buttons are labelled differently in the screenshots.
 
-  - x= 50%
-  - y= 88%
-  - Width = 100%
-  - Height = 3 pixels
-  -  `BackgroundColor`="Gray" 
 
-- `Entry`
 
-  - x = 2%
-  - y = 97%
-  - Width = 95%
-  - Height = 50 pixels
-  - `Placeholder`="Add a comment..." 
+## Modify the Mosaic Page
 
-- `ImageButton`
+This page should be designed using a `FlexLayout`. In later milestones of this app, we will use Binding layouts to connect this page with different posts. 
 
-  - x= 98%
-  - y= 97%
-  - Width = 8%
-  - Height = 50 pixels
-  - `Source`="send.png"
+### **Mosaic of Images**
 
-  
+- Create a `ScrollView`
+- Add a`FlexLayout` within the scroll view
+- Add 5-7 Images 
+  - Set each image's `WidthRequest` and `WidthRequest` so that the images are square and of equal sizes.
+- Explore the various properties of this layout
 
-The Comment Page should have the following appearance. Note: I am not expecting the Send button to be connected to an event handler.
+The layout should adapt to the available screen size and use multiple lines to display the images if needed:
 
-<img src="../images/labs_images/Lab1/Lab1_absolute_exo.png" height=400 class="inline-img"/>
-    <img src="../images/labs_images/Lab1/Lab1_absolute_exo_win.png" height=400 class="inline-img"/>
+<img src="images/labs_images/Lab1/Lab1_flexlayout.png" height=300/>
+
+<img src="images/labs_images/Lab1/Lab1_flexlayout_2.png" height=150/>
+
 
 
 
@@ -406,11 +379,11 @@ The Comment Page should have the following appearance. Note: I am not expecting 
 
 | Exercise                                   | Expected Results                                             | Points |
 | ------------------------------------------ | ------------------------------------------------------------ | ------ |
-| Profile Page - Grid definition             | Use of a Grid Layout                                         | 0.25   |
+| Profile Page - Grid definition             | Use of a `Grid` Layout                                       | 0.25   |
 | Profile Page - Element position            | Correct positioning of the items on the grid                 | 0.25   |
-| Post Page - Vertical and Horizontal Stacks | Use of a VerticalStackLayout and three HorizontalStackLayouts | 0.25   |
+| Post Page - Vertical and Horizontal Stacks | Use of a `VerticalStackLayout` and three `HorizontalStackLayout`s | 0.25   |
 | Post Page - Like Button                    | Implementation of a likes counter in the code behind         | 0.25   |
 | Post Page - Share Button                   | Use of DisplayActionSheet and DisplayAction                  | 0.5    |
-| Post Page- Comment Button                  | CommentPage is pushed on the stack when the comment button is clicked | 0.25   |
-| Comment Page - Element position and sizing | Correct positioning and sizing flags                         | 0.25   |
+| Post Page- Comment Button                  | Text Prompt pops up                                          | 0.25   |
+| Moisaic Page - Element position and sizing | Correct positioning and sizing flags                         | 0.25   |
 
