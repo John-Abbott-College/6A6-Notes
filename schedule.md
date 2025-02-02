@@ -16,18 +16,30 @@ If you miss a class, you can catch up by completing the learning activities done
 - [MAUI -Layouts](notes/Lecture3_MAUILayouts.md)
 - Lab1: Social Media Layouts
 
+## Week3
+
+- [Asynchronous Programming](notes/Lecture6_Asynchronous Programming.md)
+- Lab 1: Social Media Layouts (finishing)
+- Lab 2: Asynchronous calls (short lab)
+
+## Week4
+
+- [Data Binding](/notes/Lecture4_DataBinding.md)
+- App Navigation
+- Lab 3: Data Binding dining app
 
 <!-- 
 
-## Week3
-- Asynchronous Programming
-
-## Week4
-- [Lecture 4: Data Binding](/notes/Lecture4_DataBinding.md)
-- Lab2: Data binding dining app
-
 ## Week5
-- []
+- [Design Patterns]
+
+- [Repository]
+
+- [MVVM]()
+
+- Assignment 1
+
+  
 ## Week6
 ## Week7
 ## Week8

@@ -1,6 +1,6 @@
 # Data binding
 
-[Demo made in class: Basic Binding]()
+
 
 - In C#, data bindings allow properties of two objects to be coupled, i.e: to change together.
 
@@ -34,7 +34,7 @@ Markup Extensions appear as curly brackets in XAML, here are a few examples:
 
 - You can use a string to define a color instead of having to set the `Color` attribute
 
-  example:  `<Boder BackgroundColor="Red"/>` 
+  example:  `<Border BackgroundColor="Red"/>` 
 
 - You can use a static dictionary:
 
