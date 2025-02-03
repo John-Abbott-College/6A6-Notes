@@ -18,7 +18,7 @@ If you miss a class, you can catch up by completing the learning activities done
 
 ## Week3
 
-- [Asynchronous Programming](notes/Lecture6_Asynchronous Programming.md)
+- [Asynchronous Programming](notes/Lecture4_Asynchronous_Programming.md)
 - Lab 1: Social Media Layouts (finishing)
 - Lab 2: Asynchronous calls (short lab)
 
@@ -27,22 +27,30 @@ If you miss a class, you can catch up by completing the learning activities done
 - [Data Binding](/notes/Lecture4_DataBinding.md)
 - App Navigation
 - Lab 3: Data Binding dining app
+- Assignment 1
 
 <!-- 
 
 ## Week5
 - [Design Patterns]
-
-- [Repository]
+- [Repository Pattern]
+- Time to work on Assignment 1
+## Week6
 
 - [MVVM]()
+- Assignment 2 Instructions
+- Project Team formation & Project definition
 
-- Assignment 1
+## Spring Break
 
-  
-## Week6
 ## Week7
+
+- Auth lab
+
 ## Week8
+
+- Real time db
+
 ## Week9
 ## Week10
 ## Week11
