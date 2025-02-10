@@ -10,6 +10,6 @@
     - [Lab1](labs/lab1.md)
     
 * Assignments
-    - Coming soon
+    - [Assignment 1](assignments/Assignment1.md)
 * Project
     - Coming soon

@@ -25,21 +25,23 @@ If you miss a class, you can catch up by completing the learning activities done
 ## Week4
 
 - [Data Binding](/notes/Lecture4_DataBinding.md)
-- App Navigation
 - Lab 3: Data Binding dining app
-- Assignment 1
+- Time to work on Assignment 1
+
+## Week5
+
+- App Navigation
+- Time to work on Assignment 1
 
 <!-- 
 
-## Week5
-- [Design Patterns]
-- [Repository Pattern]
-- Time to work on Assignment 1
+Project Team formation & Project definition
+
 ## Week6
 
+- [Repository Pattern]
 - [MVVM]()
 - Assignment 2 Instructions
-- Project Team formation & Project definition
 
 ## Spring Break
 
