@@ -7,7 +7,10 @@
 * 📥**Submission**: Submit through GitHub classroom. 
 * ✅ The use of generative AI is allowed to help improve your solution. But it should not write all your assignment.
 
+## GitHub Classroom
 
+- [Section 1](https://classroom.github.com/a/8mUaPZRD)
+- [Section 2](https://classroom.github.com/a/y4GRBsM0)
 
 ## Objective
 
