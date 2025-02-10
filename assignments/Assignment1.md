@@ -9,8 +9,8 @@
 
 ## GitHub Classroom
 
-- [Section 1](https://classroom.github.com/a/8mUaPZRD)
-- [Section 2](https://classroom.github.com/a/y4GRBsM0)
+- [Section 1](https://classroom.github.com/a/u2krgRRm)
+- [Section 2](https://classroom.github.com/a/7wGQvHS4)
 
 ## Objective
 
