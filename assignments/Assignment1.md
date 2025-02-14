@@ -196,11 +196,21 @@ A sending client must be **connected and authenticated** before sending emails. 
 For reference, here’s a sample code snippet for sending an email using SMTP:
 📌 [Sending Messages with SMTP](https://github.com/jstedfast/MailKit?tab=readme-ov-file#sending-messages)
 
+
+
 **Requirements:**
 
 - Implement the following methods to send emails of type `MimeMessage`:
   - `SendMessageAsync()`
 - Your solution must **handle exceptions** and **log any errors** to the console.
+
+>  Be careful to use the correct library 
+>
+> :x: `using System.Net.Mail;`
+>
+> :white_check_mark: `using MailKit.Net.Smtp;`
+
+
 
 **Testing**
 
@@ -227,6 +237,10 @@ For reference, here’s a sample code snippet for retrieving emails using IMAP:
   - `GetMessageAsync(UniqueId)` is the method to use to download an email. 
   - This UniqueId is useful for deleting emails at a later point.
 
+> Be careful to use the correct library:
+>
+> :white_check_mark:`using MailKit.Net.Imap;`
+
 **Testing**
 
 Call the method in the `Main()` and display the title, subject and date of the retrieved emails. Compare with the list of emails in the Gmail app. 
@@ -245,7 +259,7 @@ For reference, here’s a sample code snippet:
   - `DeleteMessageAsync()`
 - You must open the Inbox in Read-Write mode first.
 - The `Uid` represents the value of the unique Id assigned by the Imap server when an email appears in a folder.  
-- You don't need to worry about this for now, you can simply delete the message with Unique Id 1 to test it out and ensure you have a few emails in the mail box.
+- You don't need to worry about this for now, you can simply delete the message with Unique Id `1` to test it out and ensure you have a few emails in the mail box.
 
 
 
