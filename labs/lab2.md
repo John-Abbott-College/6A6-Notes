@@ -2,184 +2,132 @@
 
 This lab will help you refresh your knowledge of XAML data binding and get familiar a little bit closer to having a proper app architecture.
 
-* **Worth**: 3%
-* 📅 **Due**: February 23, 2024 @11:59PM
+* **Worth**: 2%
+* 📅 **Due**: February 17, 2025 Demo (end of class) , Code (Midnight)
 * 🕑 **Late Submissions**: Deductions for late submissions is 10%/day. 
   *To a maximum of 3 days. A a grade of 0% will be given after 3 days.*
 * 📥**Submission**: Demo of the UI in class + code submission through GitHub classroom.
+* GitHub classroom links:
+  * [Section1](https://classroom.github.com/a/qrg82UQU)
+  * [Section2](https://classroom.github.com/a/OjCA4Mq7)
+
 
 ## Objective
 
-- Use XAML Binding 
-- Use View to Code Behind Binding
-- Learn how to separate the business logic from the Views
-- Build a simple tip calculator app for Canadians.
+- Create models to encapsulate the business logic of an app
 
+- Use event-based programming to update the view
 
+- Practice using View to View Binding 
+
+- Practice using View to Model Binding
+
+  
 
 ## Project Preparation
 
-- Check the `GitHub` classroom link shared with you on Teams and accept the assignment.
-- Once your private repo is created, clone it to your computer.
-- Create a new `.NET MAUI App` project in the cloned folder using the following specifications:
-  - Project Name: `TipCalculator`
-  - ⚠️ Target Framework: **.NET 7.0**
+- Once your private repo is created, clone it.
+- This repo contains an incomplete `.NET MAUI App` 
+  - Project Name: `BindingTips`
+  - ⚠️ Target Framework: **.NET 8.0**
+  - Contains a `Models`,`Views `and `DataRepos` folders to keep the classes organized.
 
 #### Target platform
 
-For this lab we will be testing the app on two different form factors:
+This lab can be tested on the various platforms:
 
-- Android Emulator: Pixel 5 - API 34 (if available)
+- Android Emulator
 - Windows Machine
+- (Optional) iOS Simulator
 
 
+
+## Context
+
+The provided starter code is for an app designed for restaurant diners who want to split their bill. It allows users to enter the bill amount before taxes, select their province, and set a tip percentage. The app then calculates and displays the total before taxes, the tax and tip amounts, and the final total after applying both. Lastly, it shows the split amount.
 
 ## User Interface
 
-Modify the `MainPage.xaml` to create a simple tip calculator. **You may use the following design** or a design of your choice:
+Modify the `MainPage.xaml` to add functionality to the tip calculator App using data binding. 
 
-<img src="../images/labs_images/Lab2/m1.png" height="400"/>
+<img src="images/labs_images/Lab2/m1.png" height="400"/>
 
-## UI - Requirements
+## UI - Modifications
 
-- Download the button icons from [here](../images/labs_images/Lab2/icons.zip), you are free to use other icons if you prefer.
+- **`ImageButton`s** 
 
-- **Information button: `ImageButton`** 
-
-  - `Source`=`"info.png"` or you may use the icon of your choice.
-  - `MaximumHeightRequest`=30
-  - `MaximumWidthRequest`=30
-  - Add an event handler and rename it accordingly.
-  - On click the app navigate to the "Canadian Tip Info" page. (Text will be provided at the end of the assignment)
+  - All image buttons should adapt to the app's theme (light or dark mode).
+  - For instance, the information button should be set to`Source`=`"info.png"` if the app is in Light mode, otherwise `"info_dark.png"`
+  - Read more about [App Theme Binding](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/system-theme-changes?view=net-maui-9.0) 
 
 - **Bill Amount Before Tax: `Entry`.**
 
-  - `PlaceholderText`: $0.00
+  - The placeholder text should display **$0.00**
 
-  - `TextChanged`: Create an event handler and name it accordingly
+  - Implement a `TextChanged`event handler and give it an appropriate name.
 
-  - `FontSize`: `Large`
+  - Input should allow numeric values only
 
-  - Allow numeric values only:
+      <img src="images/labs_images/Lab2/m2.png" height="400"/>
 
-      <img src="../images/labs_images/Lab2/m2.png" height="400"/>
+- **Tip Percentage: `Slider` and `Label`** 
 
-- **Tip Percentage: `Slider`.**
+  - Assign an  `x:Name` to the slider for reference by other UI elements.
 
-  - Define the  `x:Name` to be able to reference it elsewhere.
+  - Set the tip range to be between 0% and 100%
 
-  - Tip minimum value is 0% and max value is 100%.
-
-  - Label for tip value must be updated using `XAML`(not in the associated `C#` code.
+  - Update the tips label for tip value must be updated using `XAML`(not in the associated `C#` code behind).
 
   - The displayed tip value should increase by 1. **No decimal should be displayed.**
 
-    <img src="../images/labs_images/Lab2/m7.png" height="400"/>
+    > Hint: Explore events that are triggered when the slider is changed. Use the code behind to handle the event triggered by the slider. 
 
+    <img src="images/labs_images/Lab2/m7.png" height="400"/>
+    
     
 
 - **Canadian Province: `Picker`** 
 
-  -  Define the `x:Name` to be able to reference it elsewhere.
+  -  Assign a `x:Name` so that other UI elements may reference the Picker.
 
-  -  The picker will use a class model to display the Canadian provinces. 
+  -  Use a class model to populate the picker with Canadian provinces. 
     (`Province` class details are provided in the next section).
 
-  -  Note I suggest you complete the picker after finishing your models and static classes.
+  -  It’s recommended to complete the picker after finalizing the models and static classes.
 
-  -  Picker may be populated using its `ItemsSource` property.
-    - An easier way is to add all provinces using an array in the similar manner done in a `CollectionView` in `XAML` in the example seen in class.
+  -  Populate the picker using its `ItemsSource` property:
+    - An easier way is to add all provinces using an array in the same manner as the`CollectionView`  in the example seen in class.
     - You can then use the `ItemDisplayBinding` to set the attribute to display of each item contained in the List
 
-    <img src="../images/labs_images/Lab2/m3.png" height="400"/>
+    <img src="images/labs_images/Lab2/m3.png" height="400"/>
 
 - **Tax Rate `Label`**: 
 
-  - Right below the picker a `Label` will display the HST\GST Tax for the selected province in the picker using the province object.
-  - You must only use `XAML` binding not the code behind.
+  - Positioned below the picker, this`Label` displays the HST/GST Tax for the selected province.
+  - The value must be updated through **binding only**, without modifying it in the code-behind.
 
 - **Tip Amount `Label`** 
 
-  - `Label` displaying calculated the tip amount.
-  - `Tip Amount = (Tip Percent) /100 x Bill Amount before Tax`
+  - Displays calculated the tip amount.
+  - Formula: `Tip Amount = (Tip Percent) /100 x Bill Amount before Tax`
 
 - **Total Amount `Label`**:
 
-  -  displaying total bill amount including provincial tax and tip.
-  - `Tax Amount = (Provincial Tax) /100 x Bill Amount before Tax`
-  - `Total Amount = Bill Amount before Tax + Tax Amount + Tip Amount`
+  -  Displays total bill amount including provincial tax and tip.
+  - Formula: `Tax Amount = (Provincial Tax) /100 x Bill Amount before Tax`
+  - Formula: `Total Amount = Bill Amount before Tax + Tax Amount + Tip Amount`
 
 - **Split Options:**
 
   - Allows user to split the total amount based on a split value (number of people sharing the bill).
-  - Allows user to see how many people are splitting the bill and increase/decrease this value
-  - **Note: the number of people splitting the bill will always be greater or equal to 1*** 
+  - Displays how many people are splitting the bill and increase/decrease this value
+  - **Note: The split count must always be 1 or higher**
 
-  #### **Tip Info Page**
-
-  - Information about tipping.
-
-  - *Note: the content of the text is bigger than the screen.* 
-
-  - Use proper text styling and formatting, do not dump text into UI: Grades will be deduced for bad UI design:
-
-    <img src="../images/labs_images/Lab2/m5.png" height="400" class="inline-img"/><img src="../images/labs_images/Lab2/m6.png" height="400" class="inline-img"/>
-
-#### Information Text
-
-> ***At the restaurant (waiter or waitress)***
->
-> *The standard tip at a restaurant is 15% and may exceed 20% (which is a very good tip).However, when you talk about tip for take-out orders, it is often zero.*
-> 
-> ***Restaurant Delivery Person***
-> 
-> *The standard for restaurant delivery is usually 10% of the amount before taxes.*
-> 
-> ***Hotel***
-> 
-> *The maids are generally entitled to $1 overnight stay / room. It is the same amount per luggage for a Porter.*
-> 
-> ***Dressing or hairdresser***
-> 
-> *The amount of tip for hairdressers or barbers is between 5% and 15%.*
->
-> ***Taxi Driver***
->
-> *The amount reserved for taxi drivers varied from 10% to 15% depending on the service offered. If the driver helps you with your luggage or guide you to different places to visit, the percentage should be considered on the rise. ($ 1 / bag and / or 15% of the stroke)*
->
-> ### Tips in Other Countries
->
-> ***United States***
->
-> *The tip standards are essentially the same as in Canada.*
->
-> ***Mexico, Cuba, Dominican Republic***
->
-> *The tip is usually between 5% - 15%.*
->
-> ***Brazil, Columbia, Chile, Ecuador***
->
-> *The tip is usually included in the price of the invoice. However, it is very appreciated, especially when good service to give an amount up to the difference in the rounded invoice or around 5%.*
->
-> ***Iceland and Finland***
->
-> *No need to pay tips*
->
-> ***China, Japan, South Korea***
->
-> *The tip is not necessary and can even insult the person who rendered the service.*
->
-> ***Other countries***
->
-> *A 10% tip is never wrong. However, you can go from 5% to 10%.*
-
-[1]: https://hellosafe.ca/en/travel-insurance/tipping-world-map	"Source: Hello Safe Map"
-
-
+  
 
 ## Models
 
-Organize your project by creating a `Models` folder. Add the following new classes:
+Organize your project by adding any model in the `Models` folder. Add the following new classes:
 
 - `Province` class: represents each province basic information. In this app you require:
   - the province's name : `string`
@@ -190,6 +138,7 @@ Organize your project by creating a `Models` folder. Add the following new class
     - **OOP Encapsulation:** avoid exposing unnecessary information in the `Bill` class and hide **all calculations**. 
     - **OOP Abstraction:** all variables related to the `Bill` class should be defined in the class.  Avoid adding these variables in the code behind of the `XAML` page. The code behind should only define an object of the `Bill` class and use its members.
     - **Validation**: You model is not aware of the View and therefore should validate that the value provided to the setters. 
+  - (Optional- but recommended) Make the `Bill` class an Observable object that implements the interface `INotifyPropertyChanged` . Read more about it [here](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-implement-property-change-notification?view=netframeworkdesktop-4.8).
 
 
 
@@ -199,9 +148,13 @@ Organize your project by creating a `Models` folder. Add the following new class
 
 ## Data Repos
 
-Organize the data you use inside your project by creating a `DataRepos` folder. Add the following new static classes:
+Organize the data you use inside your project by creating a `DataRepos` folder. 
 
-- `Provinces`: Contains a single public attribute which is an iterable (array, list, etc..) of all the Canadian provinces and their respective tax rates: 
+> :information_source: The Repository design pattern creates an abstraction layer between the data access layer and the business logic of an application. This provides a centralized way to access the data across all views in the app and perform certain operations. Separating the data layer from the business logic of the app, makes the design more flexible, easier to test and maintain. 
+
+To keep things simple, add a new static class:
+
+- `Provinces`: Contains a single public attribute which is an iterable (array, list, collection, etc..) of all the Canadian provinces and their respective tax rates: 
 
   | Province                  | Tax Rate |
   | ------------------------- | -------- |
@@ -222,25 +175,30 @@ Organize the data you use inside your project by creating a `DataRepos` folder. 
 ## Binding the View with the Model and Repos
 
 - Once the classes are built integrate them to the View. Create an object `Bill` in the code behind (or in `XAML`) and use binding to connect its various properties to the code behind.  
-- As for the data repo, simply include its namespace in the code behind and refer to the `Provinces` array, it's static object!
-- I suggest you add breakpoints inside the model's properties setters and validate that they get executed when certain UI elements are modified. 
+
+  > Hint: Choose a `BindingContext` for the page and use `{Binding Source=*object*, Path=*attribute*}.
+
+- As for the data repo, simply include its namespace in the code behind and refer to the `Provinces` array, it's a static object!
+
+- I suggest you add breakpoints inside the model's properties setters and validate that they get executed when interacting with the UI elements are modified. 
+
 - If you see some properties not being updated on the screen that is most likely because values are changing without notifying the view:
-  - Remember there is many ways of implementing this app. You can use the `INotifyPropertyChanged` interface, or simply call an Update method every time a value has changed. It's up to you to decide. 
-  - I will be posting various possible solutions for this Lab. 
-- If you find yourself writing logic code in the code behind (example calculating a value), you know that you have missed to add that functionality in the class.
+  - Remember there is many ways of implementing this app. You can use the `INotifyPropertyChanged` interface, or simply call an Update method every time a value has changed.
+  
+    
 
 ## Functionality 
 
-Note that the app design does not include any "Submit" button to invoke the calculation of tip or total amount. Use event base programming with the combination of data binding to have the app automatically update the UI labels.
+Note that the app design does not include any "Submit" button to invoke the calculation of the tips and total amounts. Use event base programming with the combination of data binding to have the app automatically update the UI elements and models.
 
 ## Grading Rubric
 
 | Evaluation Criteria  | Details                                                      | Worth |
 | -------------------- | ------------------------------------------------------------ | ----- |
 | **Functionality**    | App does everything and works as expected.<br />App does not crash. | 2     |
-| **UI Design**        | All requested elements available.<br />Use of at least 2 nested layouts.<br />Use of application resources for UI styling.<br /> | 3     |
+| **UI Design**        | All requested elements available.<br />Use of at least 2 nested layouts.<br />Use of application resources for UI styling.<br /> | 2     |
 | **Data Binding**     | Use of View-to-View binding when possible.<br />Slider--> Tax Rate Label<br />Picker -> HST/GST Label<br />Use of View-to-Code-Behind binding over event handlers:<br />Tip Amount Label to code behind property<br />Tax Amount Label to code behind property<br />Total Amount Label to code behind property<br />Split Amount Label to code behind property | 6     |
-| **Model Classes**    | Proper class design and use of OOP pillars.<br />`Province` class (5)<br /> `Bill` class (15) | 3     |
+| **Model Classes**    | Proper class design and use of OOP pillars.<br />`Province` class (5)<br /> `Bill` class (15) | 5     |
 | **App Architecture** | Separation of the logic and the presentation layers of the app<br />*There should be no calculations done in the code behind.* | 2     |
 | **Name & ID**        | At the top of all submitted files: provide your name, student ID and assignment number. | 1     |
 
