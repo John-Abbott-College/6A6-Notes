@@ -120,7 +120,7 @@ To configure the clients, the following values are needed and should be encapsul
   | `ImapHost`     | "imap.gmail.com"             |
   | `ImapSocket`   | `SslOnConnect`               |
   | `ImapPort`     | 993                          |
-  | `SmptHost`     | "smtp-mail.outlook.com"      |
+  | `SmptHost`     | "smtp.gmail.com"             |
   | `SmtpSocket`   | `StartTls` or `SslOnConnect` |
   | `SmtpPort`     | 587 (TLS), 465(SSL)          |
   | `EmailAddress` | dummy email created for this |
