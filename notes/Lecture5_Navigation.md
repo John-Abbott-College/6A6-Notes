@@ -1,9 +1,5 @@
 # MAUI - Navigation
 
-[Demo made in class: Navigation](https://github.com/AppDevIII-W24-Code/Demos/tree/main/DemoNavigation)
-
-
-
 - One of the very first steps in designing an app is planning how to navigation in and out of the various pages.
 - You're first project milestone will be creating a mockup of the app including how the user should navigation across pages.
 - So far we've used `Navigation.Pushasync()` to push new pages on the stack
@@ -61,9 +57,9 @@
 
   
 
-  <img src="{{site.baseurl}}/images/maui_navigation/navigation_pushing.png" Height="100" class="inline-img"/>
+  <img src="images/maui_navigation/navigation_pushing.png" Height="100" class="inline-img"/>
 
-  <img src="{{site.baseurl}}/images/maui_navigation/navigation_popping.png" Height="100" class="inline-img"/>
+  <img src="images/maui_navigation/navigation_popping.png" Height="100" class="inline-img"/>
 
   [^1]: Images found on Xamarin.Forms Model Pages https://learn.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/navigation/modal
 
@@ -95,9 +91,9 @@ If you wish to access the views used in this demo clone the `Demos` repos
 
 - The Flyout is sometimes called "hamburger" menu and is often represented with this icon:
 
-  <img src="{{site.baseurl}}/images/maui_navigation/flyout_hamburger.png" Height="300" class="inline-img"/>
+  <img src="images/maui_navigation/flyout_hamburger.png" Height="300" class="inline-img"/>
   
-  <img src="{{site.baseurl}}/images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
+  <img src="images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
   
   
 
@@ -182,7 +178,7 @@ If you wish to access the views used in this demo clone the `Demos` repos
 
 Add two more pages to get this result:
 
-<img src="{{site.baseurl}}/images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
+<img src="images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
 
 - You should now be able to navigate to each one of these pages as you click on their icons:
 
@@ -225,7 +221,7 @@ private void Btn_SwitchTheme_Clicked(object sender, EventArgs e)
 
 - You can customize the `Header` and `Footer` of your MAUI app to your liking
 
-<img src="{{site.baseurl}}/images/maui_navigation/flyoutmenu_customization.png" Height="300" class="inline-img"/>
+<img src="images/maui_navigation/flyoutmenu_customization.png" Height="300" class="inline-img"/>
 
 
 
@@ -240,7 +236,7 @@ private void Btn_SwitchTheme_Clicked(object sender, EventArgs e)
 </Shell.FlyoutFooter>
 ```
 
-<img src="{{site.baseurl}}/images/maui_navigation/flyout_with_header.png" Height="300" class="inline-img"/>
+<img src="images/maui_navigation/flyout_with_header.png" Height="300" class="inline-img"/>
 
 
 
@@ -248,7 +244,7 @@ private void Btn_SwitchTheme_Clicked(object sender, EventArgs e)
 
 - Follow Microsoft .NET MAUI training module: https://learn.microsoft.com/en-us/training/modules/create-multi-page-apps/3-exercise-implement-flyout-navigation to create a flyout menu for their Astronomy app.
 
-   
+  >  You might need to install the latest version of .NET for this exercise. 
 
 # Tab Bar navigation
 
@@ -371,7 +367,7 @@ Then include `ShellContent` pages as children of the `TabBar`.
 
 - This will result in having a hierarchical structure within your pages, in this case the `FilePage` and `NewPostPage` are grandchildren of the `TabBar`
 
-   <img src="{{site.baseurl}}/images/maui_navigation/tabBar_2.png" Height="300" class="inline-img"/>
+   <img src="images/maui_navigation/tabBar_2.png" Height="300" class="inline-img"/>
    
    
 

@@ -1,7 +1,7 @@
 # Schedule 
 If you miss a class, you can catch up by completing the learning activities done in class and labs which will be linked here on a weekly basis:
 
-## Week1
+## Week 1
 - Introductions
     - Outline 
     - Rules on using AI
@@ -11,37 +11,46 @@ If you miss a class, you can catch up by completing the learning activities done
 - Team activity: 
     - Research an app dev framework
 
-## Week2
+## Week 2
 - [Introduction to MAUI](/notes/Lecture%202%20MAUI%20Architecture.md)
 - [MAUI -Layouts](notes/Lecture3_MAUILayouts.md)
 - Lab1: Social Media Layouts
 
-## Week3
+## Week 3
 
 - [Asynchronous Programming](notes/Lecture4_Asynchronous_Programming.md)
 - Lab 1: Social Media Layouts (finishing)
 - Data Processor: Asynchronous calls (short lab)
 
-## Week4
+## Week 4
 
-- [Data Binding](/notes/Lecture4_DataBinding.md)
+- [Data Binding](notes/Lecture4_DataBinding.md)
 - Lab 2: Data Binding dining app
 - Time to work on Assignment 1
 
-## Week5
+## Week 5
 
-- App Navigation
-- Time to work on Assignment 1
+- Monday: College Closed
+- Friday: 
+  - Lab 2 - demo time
+  - Time to work on Assignment 1
+  - Final project update/announcement 
+
+## **Week 6**
+
+- [App Navigation](notes/Lecture5_Navigation.md)
 - Project Team formation 
+- Assignment 2 instructions
 
 <!-- 
 
 Project Team formation & Project definition
 
-## Week6
+## Debt
 
-- Start of Assignment 2
-- Assignment 2 Instructions
+- Lab3 : App settings & start-up behaviour and file and camera picker, permissions. 
+
+  
 
 ## Spring Break
 
