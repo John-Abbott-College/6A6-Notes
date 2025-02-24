@@ -282,7 +282,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 **Figure 2: Inbox Page** 
 
-<img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/as1_inbox.png" Height=400 class="inline-img"/>Height=400 class="inline-img"/><img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/as1_Inbox_swipe_right.png" Height=400 class="inline-img"/><img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/as1_inbox_search.png" Height=400 class="inline-img"/>
+<img src="images/assignments_images/assignment1_imgs/as1_inbox.png" Height=400 class="inline-img"/>Height=400 class="inline-img"/><img src="images/assignments_images/assignment1_imgs/as1_Inbox_swipe_right.png" Height=400 class="inline-img"/><img src="images/assignments_images/assignment1_imgs/as1_inbox_search.png" Height=400 class="inline-img"/>
 
 
 
@@ -292,7 +292,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
    *For example: Letter "O" for Outlook Team*
 
-   <img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/User_icon.png" Height=100 class="inline-img"/>
+   <img src="images/assignments_images/assignment1_imgs/User_icon.png" Height=100 class="inline-img"/>
 
    > Hint: You must use a converter within the Binding of the user icon label. This converter must return the first character of the display name:
 
@@ -308,7 +308,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 **Figure 3: Unread emails are marked with a blue line, read emails have a transparent line** 
 
-<img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/Read_unread.png" Height=200 class="inline-img"/>
+<img src="images/assignments_images/assignment1_imgs/Read_unread.png" Height=200 class="inline-img"/>
 
 9. The "Compose" button should asynchronously push a new `WritePage`:
 
@@ -346,7 +346,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 
 
-<img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/as1_readpage.png" Height=400 class="inline-img"/>
+<img src="images/assignments_images/assignment1_imgs/as1_readpage.png" Height=400 class="inline-img"/>
 
 
 
@@ -393,7 +393,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
    **Figure 5: `WritePage` template** (left - forwarded email , right - new email)
 
-<img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/foward_writepage.png" Height=400 class="inline-img"/><img src="C:/Users/Youmna.Badawy/Documents/repos/6A6-Notes/images/assignments_images/assignment1_imgs/as1_writepage.png" Height=400 class="inline-img"/>
+<img src="images/assignments_images/assignment1_imgs/foward_writepage.png" Height=400 class="inline-img"/><img src="images/assignments_images/assignment1_imgs/as1_writepage.png" Height=400 class="inline-img"/>
 
 
 
