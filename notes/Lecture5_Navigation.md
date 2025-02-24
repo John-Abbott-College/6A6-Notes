@@ -1,12 +1,12 @@
 # MAUI - Navigation
 
-- One of the very first steps in designing an app is planning how to navigation in and out of the various pages.
-- You're first project milestone will be creating a mockup of the app including how the user should navigation across pages.
-- So far we've used `Navigation.Pushasync()` to push new pages on the stack
-- There exists four  ways of navigating through pages:
+- One of the very first steps in designing an app is planning how to navigate in and out of the various pages.
+- You're first project milestone will be creating a mock-up of the app including how the user should navigate across pages.
+- So far we've used `Navigation.PushAsync()` to push new pages on the stack
+- In .NET MAUI, there exists four  ways of navigating through pages:
   - Tab bar navigation
   - Flyout menu navigation
-  - Stack Navigation (**what we've been using so far**)
+  - Stack Navigation 
   - Route Navigation 
 
 
@@ -65,7 +65,7 @@
 
   
 
-
+​	
 
 # Shell
 
@@ -123,9 +123,9 @@ If you wish to access the views used in this demo clone the `Demos` repos
 
 
 
-- Remove the line `Shell.FlyoutBehavior="Disabled"` to enable the flyout behavior
+- Remove the line `Shell.FlyoutBehavior="Disabled"` to enable the flyout behaviour
 
-- You can now add more `ShellContent` and you'll notice that I flyout menu appears on the top left corner containing a route to the `MainPage` twice:
+- You can now add more `ShellContent` and you'll notice that the flyout menu appears on the top left corner containing a route to the `MainPage` twice:
 
 ```xml
 <Shell
@@ -263,7 +263,7 @@ The next navigation style we will learn about is Tab bar navigation:
   >
   > "Use tabs only if your app has a few pages of equal importance"
   >
-  > "Use 3-4 tabs to avoid over crowded apps"
+  > "Use 3-4 tabs to avoid overcrowded apps"
   >
   > "Avoid using tab bars if your data is traversed from general to more specific"
 
