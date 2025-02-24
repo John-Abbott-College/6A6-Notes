@@ -12,5 +12,6 @@
     
 * Assignments
     - [Assignment 1](assignments/Assignment1.md)
+    - [Assignment 2](assignments/Assignment2.md)
 * Project
     - Coming soon
