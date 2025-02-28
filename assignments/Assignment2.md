@@ -106,16 +106,17 @@ We want to ensure that the model is observable so that other objects can subscri
 
 Various message properties such as the sender address, recipients, subject, etc. should be stored in this class. 
 
-| Name       | Type                     | Description                                                  |
-| ---------- | ------------------------ | ------------------------------------------------------------ |
-| `UniqueId` | `MailKit.UniqueId`       | A unique identifier for an email. Optional field.            |
-| `Date`     | `DateTimeOffset`         | The date and time of sending the email                       |
-| `Subject`  | `string`                 | The subject of the email                                     |
-| `Body`     | `string`                 | The body/content of the email. This field must be optional, allowing for lazy loading. |
-| `HtmlBody` | `string`                 | The body/content of the email. This field must be optional, allowing for lazy loading. |
-| `From`     | `MimeKit.MailboxAddress` | The email address of the sender                              |
-| `To`       | `List<MailboxAddress>`   | The email addresses of the recipients                        |
-| `IsRead`   | `bool`                   | A flag used to decipher between read and unread emails       |
+| Name         | Type                     | Description                                                  |
+| ------------ | ------------------------ | ------------------------------------------------------------ |
+| `UniqueId`   | `MailKit.UniqueId`       | A unique identifier for an email. Optional field.            |
+| `Date`       | `DateTimeOffset`         | The date and time of sending the email                       |
+| `Subject`    | `string`                 | The subject of the email                                     |
+| `Body`       | `string`                 | The body/content of the email. This field must be optional, allowing for lazy loading. |
+| `HtmlBody`   | `string`                 | The body/content of the email. This field must be optional, allowing for lazy loading. |
+| `From`       | `MimeKit.MailboxAddress` | The email address of the sender                              |
+| `To`         | `List<MailboxAddress>`   | The email addresses of the recipients                        |
+| `IsRead`     | `bool`                   | A flag used to decipher between read and unread emails       |
+| `IsFavorite` | `bool`                   | A flag used to mark some messages as favorites               |
 
 ### Constructors
 
@@ -127,7 +128,7 @@ As you modify the Service class, you'll learn that there are two ways of receivi
 
   - `IMessageSummary.Envelope` contains the sender, recipient, subject, date information. 
 
-  - To set the `IsRead` flag, you may use:
+  - To set the `IsRead` property, you may use:
 
     ```csharp
     IsRead = (message.Flags == MessageFlags.Seen);
@@ -141,7 +142,7 @@ As you modify the Service class, you'll learn that there are two ways of receivi
   > From= (MailboxAddress)summary.Envelope.From[0];
   > ```
 
-  
+  - To set the `IsFavorite` property, use`MessageFlags.Flagged`
 
 -  `public ObservableMessage(MimeMessage mimeMessage, UniqueId uniqueId)`:
 
@@ -189,6 +190,11 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
   ```csharp
   Task DeleteMessageAsync(UniqueId uid);
   ```
+
+- You must add more methods to implement the following functionalities:
+  - Mark a message as Read
+  - Mark a message as Favorite
+  - Perform a search query on the list of emails.
 
 ### Testing 
 

@@ -18,4 +18,6 @@
 * Project
     - [Instructions](https://docs.google.com/document/d/1mzlfJEHyhWedkW9OtjLSd3bU7YiWsuclyhHAvRRIaEs/edit?tab=t.0)
     
+    - [Slides and sample project](https://docs.google.com/presentation/d/1HOXBHxM1Wf3iUwRaCZHZ4qoBHXxRaSVD_GhH8SgVU9E/edit?usp=sharing)
+    
       
