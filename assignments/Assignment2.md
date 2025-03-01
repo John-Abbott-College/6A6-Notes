@@ -100,7 +100,25 @@ We want to ensure that the model is observable so that other objects can subscri
 - Implement `INotifyPropertyChanged` from `System.ComponentModel`
 
 - Define the `PropertyChanged` event.
+
 - Install the **`PropertyChanged.Fody`** NuGet package to automatically generate property change notifications. This eliminates the need to manually invoke `OnPropertyChanged()` in setters, making the code cleaner and more maintainable.
+
+- **UPDATE FEB 28**:
+
+  - You must install the **Fody** NuGet package
+
+  - This will automatically create a `FodyWeavers.xml` file at the root of the project
+
+  - Add the following property to this file:
+
+    ```xml
+    <Weavers>
+      <PropertyChanged/>
+    </Weavers>
+    ```
+
+  - Now, any class implementing the `INotifyPropertyChanged` interface will raise the `PropertyChanged` event from the setters of all its properties. [Read more here](https://github.com/Fody/PropertyChanged?tab=readme-ov-file#-propertychangedfody)
+
 
 ### Properties 
 
@@ -191,10 +209,13 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
   Task DeleteMessageAsync(UniqueId uid);
   ```
 
-- You must add more methods to implement the following functionalities:
+- UPDATE: **You must add more methods to implement the following functionalities:**
+
   - Mark a message as Read
   - Mark a message as Favorite
-  - Perform a search query on the list of emails.
+  - Perform a search query on the list of emails, if the `From`, `Subject` or `Body` contains a given search string. Your search query should return the `UniqueId` 
+
+  📌[Set a message flag](https://github.com/jstedfast/MailKit/tree/master?tab=readme-ov-file#setting-message-flags-in-imap)📌[Perform a search query](https://github.com/jstedfast/MailKit/tree/master?tab=readme-ov-file#searching-an-imap-folder)
 
 ### Testing 
 
@@ -234,13 +255,12 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 
 ~~~csharp
- ```csharp
  var swipe = (sender as SwipeItem);
  ObservableMessage item = swipe.BindingContext as ObservableMessage;
- ```
+
 ~~~
 
-- **Way 2**: This strategy has some overhead but can be very useful if you chose to use templated views that you can reuse. Using `Command`s and  `CommandParameter`:
+- **Way 2**: This strategy has some overhead but can be very useful if you chose to use templated views or view models. Using `Command`s and  `CommandParameter`:
 
 - This method uses `Binding` to bind a command defined in the code behind to the `XAML`:
 
@@ -266,7 +286,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
     - `AddToFavorites()`
 
-    - `Archive()`
+    - UPDATE: FEB 28 ~~`Archive()`~~
 
     - `Delete()`
 
@@ -282,9 +302,17 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
      > Hint: In the event handler, cast the sender into a Grid object similarly to the example of the SwipeItems.
 
-   - When tapped a new `ReadPage` should be created the selected email should be passed as argument.
+     **UPDATE FEB 28:**
 
+   - When tapped, the email should be downloaded 
+   
+   - The `ObservableMessage` must be marked as `Read` in the original collection of emails as well as on the email server. 
+   
+     > Hint: Use the `UniqueId` of the tapped email to modify it's flag and find it's position in the collection. 
      
+   -  A new `ReadPage` should be created and the selected email should be passed as argument.
+   
+   - **Note 🛠️** Putting this much logic in an event handler is NOT good practice. Let's add a *TODO* here, for when we have a better app architecture. 
 
 **Figure 2: Inbox Page** 
 
@@ -294,7 +322,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 6. Add a `Label` with Text "Favorite" and who's visibility is bound to the `IsFavorite` boolean of the `ObservableMessage` model
 
-7. Use a rounded `Frame` or `Border` with the first character of the `DisplayName` as the user icon. 
+7. Use a rounded `Frame` or `Border` with the first character of the `Name` as the user icon. 
 
    *For example: Letter "O" for Outlook Team*
 
@@ -306,9 +334,9 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
    > Hint: You must a converter and find a way to translate letters to color value. 
 
-9. Unread emails (never tapped) should appear differently. Feel free to use any method to distinguish them `IsRead`
+9. Unread emails (never tapped) should appear differently. Feel free to use any method to distinguish them 
 
-   > Hint: Use Converters to translate the IsRead property of an email into a UI attribute such as a color or a text style, etc..
+   > Hint: Use Converters to translate the `IsRead` property of an email into a UI attribute such as a color or a text style, etc..
 
    
 
@@ -325,36 +353,36 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
    **Code behind:**
 
    1. The constructor of the `ReadPage` should receive an `ObservableMessage` object as argument.
-   2. The ObservableMessage must be marked as `Read` 
    3. Use this ObservableMessage as `BindingContext`
-
+   
    **XAML:**
-
+   
    3. Contains:
-
-      - A `Label` to indicate the `Subject`
-
+   
+      - A `Label` to indicate the `Subject` bound to the `ObservableEmail`
+   
       - A `Label` to indicate the `From.Name`
-
+   
       - Labels for each recipient email`To`:
-
+   
         > Hint: Use `BindableLayout` or a `CollectionView`with the `ItemsSource` set to the list of recipients.
-
+   
       - A `Label` to indicate the date
-
-      - A `Label` or `Editor` to display the body of the email.
-
-      - Feel free to improve the design to your linking.
-
-        
+   
+      - Feel free to improve the design to your linking while ensure the basic information is displayed. 
+   
+      UPDATE - FEB 28:
+   
+      - To display HTML content, use a`WebView` with `Html` property bound to the Email's `HtmlBody`. 
+      - To ensure the user can scroll through the email, it must have a `ScrollView` as parent.
+   
+      
 
 **Figure 4: `ReadPage` template**  
 
 
 
 <img src="images/assignments_images/assignment1_imgs/as1_readpage.png" Height=400 class="inline-img"/>
-
-
 
 4. Implement a "Forward" button to:
    - Use the `GetForward()` method to get the forwarded email. 
@@ -368,11 +396,9 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
    > Hint: Create a default value for the passed argument and use conditional logic in the constructor.
 
-2. Initialize a public readonly property `EmailAddress` named`CurrentAddress`. Set its value to a mock email for now. 
+2. Initialize a public readonly property `MailboxAddress`.  Set its value to a mock email using the Config email. 
 
-   **Note: we will later replace this with a real email provided by a mail service**.
-
-3. Initialize a public `Email` property to bind the various entries named `EditEmail`. Set the `SenderEmail` to the email you defined previously.
+3. Initialize a public `Observablemessage` property to bind the various entries named `EditEmail`. Set the sender email (`From`) to the email you defined previously.
 
 4. The `EditEmail` can be used as a Binding context for the various entries.
 
@@ -380,30 +406,38 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
    **XAML:**
 
-5. Contains an entry bound to the `CurrentEmail`
+5. Contains a Send Button with a clicked event.
+
+6. Contains an entry bound to the `CurrentEmail`
 
    - Should be `ReadOnly`
 
    - Bind it to the `SenderEmail`
 
-   - Contains a entry for the recipients emails:
-     - The `Keyboard` should be set to `Email`
-     - Assume the inputted emails are separated by `"';'" `
-     - Use the `Completed` event to parse the emails entered by the user
+7. Contains a entry for the recipients emails:
+  - The `Keyboard` should be set to `Email`
+  - Assume the inputted emails are separated by `"';'" `
+  - Use the `Completed` event to parse the emails entered by the user
 
-6. Contains an entry for the Subject
+8. Contains an entry for the Subject
 
-7. Contains an `Editor` :
+9. Contains an `Editor` bound to the email Body.
 
-8. Set the `HeightRequest` to at least 500:
+   - Set its`HeightRequest` to at least 500:
 
    **Figure 5: `WritePage` template** (left - forwarded email , right - new email)
 
 <img src="images/assignments_images/assignment1_imgs/foward_writepage.png" Height=400 class="inline-img"/><img src="images/assignments_images/assignment1_imgs/as1_writepage.png" Height=400 class="inline-img"/>
 
+**UPDATE FEB 28:** 
 
+**Event handlers**
 
+- The recipients emails event handler should use `MailboxAddress.TryParse()` to validate the formats of the email. 
 
+- The send button event handler should display alerts if the the Subject or recipients field are empty: 
+
+  <img src="images/assignments_images/assignment1_imgs/alert_write_page.png" height=400/>
 
 ### Testing on the Android 
 
@@ -424,12 +458,11 @@ if (DeviceInfo.Platform == DevicePlatform.Android)
 
 ## Additional notes
 
-- I suggest you draw a quick wireframe of your app to help you define the views and their interactions with the model
+- I suggest drawing a quick wireframe of your app to help you define the views and their interactions with the model
+
 - For all image button icons, download them from [flaticon](https://www.flaticon.com/) or [icon8](https://icons8.com/icons/set/library) 
-- Create your layouts with hard coded data for simplification 
-- Keep your code behind clean! (As little logic as possible)
 
-
+  
 
 ## Helpful Tips
 
