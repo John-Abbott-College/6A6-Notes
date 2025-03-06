@@ -554,12 +554,14 @@ Given that data must be sent from an origin class *`A`* to a destination class *
 
 ## Grading Rubric
 
+UPDATED MARCH 3rd
+
 | Evaluation Criteria   | Details                                                      | Worth (/110) |
 | --------------------- | ------------------------------------------------------------ | ------------ |
 | **UI Design**         | All requested elements available. 5<br /><br />Use of at least a Tab Bar or a Flyout menu 2<br />Use of at least 1 `CollectionView` 2<br />Use of application resources for UI styling 1<br />Use of converters 5 .<br />Use of swipe view 3 .<br />Use of tap gesture recognizer 2.<br /> | 20           |
-| **Views code behind** | Correct use of dependency injection 5.<br />Use of data binding 15.<br />Proper string formatting when required  5.<br />Use of the Data Repo to interact with the data 10.<br /> | 35           |
-| **Model Classes**     | Proper class design and use of OOP pillars.<br />`Email` class 15<br />`EmailRepo`  class 20 | 35           |
-| **User stories**      | User stories are written from the perspective of the end user. User stories are simple and concise. Every user story has a clear acceptance criteria. | 5            |
+| **Views code behind** | Correct use of dependency injection 10.<br />Correct use of asynchronous programming in the event handlers. </br>Use of data binding 20.<br />Proper string formatting when required  5.<br /> | 35           |
+| **Model Classes**     | Proper class design and use of OOP pillars.<br />`ObservableEmail` Correct error handling if necessary and validation in the setters. | 20           |
+| **Service Class**     | Modified `EmailService` class adding fetching functionality and downloading a single email.  Correct error handling if necessary. | 20           |
 | **Functionality**     | App does everything and works as expected.<br />App does not crash..<br />A user can view a list of email, send an email, delete and archive an email, mark as favorite... | 10           |
 | **Coding Style**      | Use of comments.<br />Use of naming conventions.<br />Avoid the use of magic numbers: define constants when needed. | 3            |
 | **Name & ID**         | At the top of all submitted files: provide your name, student ID and assignment number. | 2            |
