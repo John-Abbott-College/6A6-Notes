@@ -162,10 +162,15 @@ As you modify the Service class, you'll learn that there are two ways of receivi
 
   - To set the `IsFavorite` property, use`MessageFlags.Flagged`
 
--  `public ObservableMessage(MimeMessage mimeMessage, UniqueId uniqueId)`:
+- `public ObservableMessage(MimeMessage mimeMessage, UniqueId uniqueId)`:
 
   - `MimeMessage` doesn't have a `UniqueId` field, the service class must pass this information to the constructor alongside message.
   - All fields can be extracted from the `MimeMessage`
+
+- **UPDATE MARCH 10**:
+
+  - The `MimeMessage` doesn't contain the `MessageFlags`. Keep both flags to default values. This constructor will only be required when downloading an email in full.
+
 
 
 
@@ -173,7 +178,9 @@ As you modify the Service class, you'll learn that there are two ways of receivi
 
 - `public ToMime()` : This message must return a `MimeMessage` from an `ObservableMessage`. 
 
-- `public Email GetForward()`: This method returns a new Email with a forwarded body and subject as such:
+  **UPDATE MARCH 10:**
+
+- `public ObservableEmail GetForward()`: This method returns a new Email with a forwarded body and subject as such:
 
   
 
@@ -223,6 +230,23 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 - Create a public static instance of the `EmailService` class in the `App.xaml.cs`
 - Ensure that there are no compilation errors, for now. 
 
+### Testing on the Android 
+
+- The android emulator will throw a `MailKit.Security.SslHandshakeException` saying that the server's certificate could not be verified. This is because, the Root CA doesn't seem to be installed by default on the Android emulator. 
+- This is a runtime conditional, verifying the current platform and disabling the CA validation step. 
+- Feel free to explore better options.
+
+```python
+// Disable SSL validation on Android
+if (DeviceInfo.Platform == DevicePlatform.Android)
+{
+    imapClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
+    smtpClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
+}
+```
+
+> I didn't spend much time trying to setup a CA and a proper Server Certificate call-back, this is why I went with `MailKit`'s workaround, by setting the certificate call-back to true (not checking the validity of the certificate). This isn't the most secure option of course and is not recommended for production. But, for the purpose of getting this to work within the timeframe we have, this is the workaround we'll use.
+
 
 
 ## UI Design 
@@ -234,17 +258,55 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
    - `WritePage` (displays a form to write a new email)
    - Remove the `MainPage`
 
-   
 
-2. In the Inbox view, you should include an `SearchBar` within the `NavBar`, this will serve as a search bar to filter out emails:
+## Inbox Page
+
+**MARCH 10:**
+
+**Code behind:**
+
+⚠️ In the constructor of the Inbox page, you need to fetch emails using `App.EmailService.FetchAllMessages()`, which was implemented earlier. However, there's a challenge—constructors in C# cannot be asynchronous, meaning you cannot `await` this call inside the constructor.
+
+So, what are your options? Should you block the thread to load emails? **Absolutely not!** Blocking the thread can freeze the UI and degrade performance.
+
+What about starting a new thread? That approach introduces risks, such as threading conflicts and unhandled exceptions.
+
+The best alternative is to use a private helper method and call it from the constructor, like this:
+
+```csharp
+public InboxPage()
+{
+    InitializeComponent();
+    DownloadEmails(); //Not awaited in the constructor
+    BindingContext = this;
+}
+private async void DownloadEmails()
+{
+    var messages = await App.EmailService.FetchAllMessages();
+    //complete the construction of the ObservableCollection...
+
+} 
+```
+
+It might seem unusual to call an `async` method without awaiting it, and indeed, this can be risky—especially if something tries to access the email list before it has finished loading. However, in this specific case, the list won’t be accessed until it’s displayed.
+
+For a deeper dive into handling `async` calls in constructors, check out this [blog post](https://www.damirscorner.com/blog/posts/20221021-AvoidAsyncCallsInViewmodelConstructors.html).
+
+**XAML** 
+
+1. In the Inbox view, you should include an `SearchBar` within the `NavBar`, this will serve as a search bar to filter out emails:
 
    > Hint: Use `Shell.TitleView` to include your search bar
 
-3. In the inbox view, use a `CollectionView` of a collection of email items
+2. In the inbox view, use a `CollectionView` of a collection of email items
 
-4. Use a `<SwipeView>` as a `DataTemplate` of the `CollectionView.ItemTemplate`:
+3. Use a `<SwipeView>` as a `DataTemplate` of the `CollectionView.ItemTemplate`:
 
    - `SwipeView.RightItems` should include two `SwipeItem`s titled "Delete" and "Favorite" as shown below.
+
+     **UPDATE MARCH 10**
+
+   - The swipe View is not supported on the windows platform. You must test this on a mobile device.
 
    - To handler the swipe click you can do this in two different ways:
 
@@ -282,16 +344,6 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
   
 
-  - To perform the actions use the Repo's methods: 
-
-    - `AddToFavorites()`
-
-    - UPDATE: FEB 28 ~~`Archive()`~~
-
-    - `Delete()`
-
-      
-
 6. Use a `Grid` to define the layout of the `CollectionView.ItemTemplate`
 
 7. Add a `<GestureRecognizer>` on the `Grid` :
@@ -309,10 +361,12 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
    - The `ObservableMessage` must be marked as `Read` in the original collection of emails as well as on the email server. 
    
      > Hint: Use the `UniqueId` of the tapped email to modify it's flag and find it's position in the collection. 
-     
-   -  A new `ReadPage` should be created and the selected email should be passed as argument.
+   
+   - A new `ReadPage` should be created and the selected email should be passed as argument.
    
    - **Note 🛠️** Putting this much logic in an event handler is NOT good practice. Let's add a *TODO* here, for when we have a better app architecture. 
+   
+     
 
 **Figure 2: Inbox Page** 
 
@@ -344,14 +398,18 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
 <img src="images/assignments_images/assignment1_imgs/Read_unread.png" Height=200 class="inline-img"/>
 
-9. The "Compose" button should asynchronously push a new `WritePage`:
+9. The "Compose" button should asynchronously push a new `WritePage`.
+
+   
+
+   
 
    
 
    ### ReadPage
-
+   
    **Code behind:**
-
+   
    1. The constructor of the `ReadPage` should receive an `ObservableMessage` object as argument.
    3. Use this ObservableMessage as `BindingContext`
    
@@ -439,22 +497,7 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
 
   <img src="images/assignments_images/assignment1_imgs/alert_write_page.png" height=400/>
 
-### Testing on the Android 
 
-- The android emulator will throw a `MailKit.Security.SslHandshakeException` saying that the server's certificate could not be verified. This is because, the Root CA doesn't seem to be installed by default on the Android emulator. 
-- This is a runtime conditional, verifying the current platform and disabling the CA validation step. 
-- Feel free to explore better options.
-
-```python
-// Disable SSL validation on Android
-if (DeviceInfo.Platform == DevicePlatform.Android)
-{
-    imapClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
-    smtpClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
-}
-```
-
-> I didn't spend much time trying to setup a CA and a proper Server Certificate call-back, this is why I went with `MailKit`'s workaround, by setting the certificate call-back to true (not checking the validity of the certificate). This isn't the most secure option of course and is not recommended for production. But, for the purpose of getting this to work within the time frame we have, this is the workaround we'll use:
 
 ## Additional notes
 
