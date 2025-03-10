@@ -1,16 +1,14 @@
 # MVVM
 
-[Demo made in class: MVVM and Unit Testing]()
-
 The Model-View-ViewModel (MVVM) pattern is a *software design pattern*. Design patterns are sets of rules and templates that help make application code **better**, more **structured** or more **consistent**. 
 
-- The MVVM pattern is used to help separate the app's behavior logic from the user interface-rendering code, and to do so in a way that supports unit testing.
+- The MVVM pattern is used to help separate the app's behaviour logic from the user interface-rendering code, and to do so in a way that supports unit testing.
 
 - MVVM is the basis for many frameworks and programming tool-kits. Most of those frameworks also provide other things, like navigation and messaging abstractions, that help MVVM promote unit testing. 
 
   
 
-  <img src="{{site.baseurl}}/images/mvvm/MVVMPattern.png" />
+  <img src="images/mvvm/MVVMPattern.png" />
 
 ## MVVM & `.NET MAUI`
 
@@ -77,18 +75,18 @@ Testable parts of an app:
 
 7. You also need to ensure that your app targets the netX.0 framework used by the **xUnit** Project.
 
-8. For the **MAUI app** project, modify the MS Build file to add the .net framework used by the xUnit Project: example `net7.0`:
+8. For the **MAUI app** project, modify the MS Build file to add the .net framework used by the xUnit Project: example `net8.0`:
 
    ```xml
-   <!-- xUnit: Add net7.0; here -->
-   <TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+   <!-- xUnit: Add net8.0; here -->
+   <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
    ```
 
 9. Ensure that the output is a .dll not .exe when building the app for testing:
 
    ```xml
    <!-- xUnit: The condition here only excludes this for the unit test project -->
-   <OutputType Condition="'$(TargetFramework)' != 'net7.0'">Exe</OutputType>
+   <OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
    ```
 
 10. Re-build the Maui App. Re-run it on your other target frameworks to ensure it is still functional.
@@ -103,7 +101,7 @@ Testable parts of an app:
 
 
 
-## Demo - turning the Billing App into MVVM and unit testing it
+## Activity-  turning the Billing App into MVVM and unit testing it
 
 **Objectives:**
 
