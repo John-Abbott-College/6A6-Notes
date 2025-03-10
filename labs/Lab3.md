@@ -11,29 +11,21 @@
 
 ## Objectives
 
-In this lab, we will attempt to make the Maui Social Media App more persistent to user changes.  
+In this lab, we will attempt to add navigation to the Maui Social Media App, add photo pickers, save the user preferences and use an API to save images. 
 
-- Learn how to use application preferences
-- Learn how to use embedded text files
-- Learn how to use embedded app settings in a json format
-- Learn how to use an API to save images on the cloud.
-- Learn how to serialize and deserialize objects and data strucutres.
+- Add flyout and tab bar navigation 
+- Use application preferences
+- Add and use embedded text files
+- Use and save app settings in a json format
+- Use an API to save images on the cloud.
+- Serialize and deserialize objects and data structures.
 
 
 
 ## Setup
 
-- Clone the following [repo](https://github.com/AppDevIII-W24-Code/Labs-solutions.git)
-
-- Save it on your local drive `C:/Users/<studentId>`, not on One Drive
-
-- Avoid lengthy file directories
-
-- Open the Lab3 folder containing the `MauiSocial` app, feel free to create a copy of the project so you can push it on a personal repo later on.
-
-- You will not submit this at the end, you will only show me your progress in class.
-
-- I have already installed the important package :
+- Accept [this](ADD LINK) Github classroom assignment 
+- The required packages are already installed: 
   - `Cloudinary` (to upload pictures on the cloud)
 
 
@@ -44,11 +36,82 @@ For this lab we will be testing the app on two different form factors:
 
 - Android Emulator: Pixel 5 - API 34
 
-- (optional) iOS, **Note:** I did not configure app entitlements for iOS nor did I test the app on this platform.
+- (optional) iOS, **Note:** I did not configure app entitlements for iOS nor did I test the app on this platform yet.
 
   
 
 
+
+## Exercise 1 - Flyout Menu
+
+As an inspiration, we will be using Instagram's layout to add navigation as such:
+
+1. Add the `./Views` folder to the `AppShell.xaml` namespace:
+
+   ```xml
+   <Shell
+       x:Class="DemoNavigation2.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:DemoNavigation"
+       xmlns:views="clr-namespace:DemoNavigation.Views">
+   ```
+
+   This will enable us to refer to the views folder from within xaml
+
+2. Add three pages within your `Views ` folder and add them as `ShellContent` in the `AppShell` :
+
+   - Groups 
+   - Info 
+   - Settings
+
+3. Notice that the `Route` property must be changed for each added page.
+
+4. Add an icon to each flyout item to obtain the following results:
+
+   <img src="images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
+
+5. Some icons were included in the `Images/icons` but were not added yet to the Embedded Static Resources. You must do this first by double clicking the project file (`.csproj`) and adding the folder:
+
+   ```xml
+   <!-- Images -->
+   <MauiImage Include="Resources\Images\*" />
+   <MauiImage Include="Resources\Images\samples\*" />
+   <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+   
+   <MauiImage Update="Resources\Images\icons\*" />
+   ```
+
+6. Add a flyout item which will act as a button to switch between dark/light mode:
+
+   ```xml
+   <MenuFlyoutItem Text="Switch Theme"  Clicked="Btn_SwitchTheme_Clicked"/>
+   
+   ```
+
+7. Add the even handler in the `AppShell.xaml.cs`
+
+   ```csharp
+   private void Btn_SwitchTheme_Clicked(object sender, EventArgs e)
+   {
+   
+       switch (App.Current.UserAppTheme)
+       {
+           case AppTheme.Light:
+               App.Current.UserAppTheme = AppTheme.Dark;
+               break;
+           case AppTheme.Dark:
+               App.Current.UserAppTheme = AppTheme.Light;
+               break;
+           default:
+               App.Current.UserAppTheme = AppTheme.Light;
+               break;	
+       }
+   }
+   
+   ```
+
+   
 
 ## Exercise 1 (1 pt) - App Preferences
 
@@ -57,7 +120,6 @@ For this first exercise, you will have to complete the `Settings.xaml` page func
 | Preference name | Type     |
 | --------------- | -------- |
 | "`username`"    | `string` |
-| `"profileuri"`  | `string` |
 | `"apptheme"`    | `bool`   |
 
 **Setting preferences**
