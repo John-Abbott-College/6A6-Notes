@@ -107,7 +107,7 @@ We want to ensure that the model is observable so that other objects can subscri
 
   - You must install the **Fody** NuGet package
 
-  - This will automatically create a `FodyWeavers.xml` file at the root of the project
+  - This will automatically create a `FodyWeavers.xml` file at the root of the project folder.
 
   - Add the following property to this file:
 
@@ -117,7 +117,7 @@ We want to ensure that the model is observable so that other objects can subscri
     </Weavers>
     ```
 
-  - Now, any class implementing the `INotifyPropertyChanged` interface will raise the `PropertyChanged` event from the setters of all its properties. [Read more here](https://github.com/Fody/PropertyChanged?tab=readme-ov-file#-propertychangedfody)
+  - Now, any class implementing the `INotifyPropertyChanged` interface will raise the `PropertyChanged` event in the setters of all of its public properties. [Read more here](https://github.com/Fody/PropertyChanged?tab=readme-ov-file#-propertychangedfody)
 
 
 ### Properties 
@@ -138,7 +138,7 @@ Various message properties such as the sender address, recipients, subject, etc.
 
 ### Constructors
 
-As you modify the Service class, you'll learn that there are two ways of receiving a message , either through a summary `IMessageSummary` or a  full`MimeMessage`. This model should have **at least** two constructors to accommodate for these different use cases. 
+As you modify the Service class, you'll learn that there are two ways of receiving a message , either through a summary `IMessageSummary` or a  full `MimeMessage`. This model should have **at least** two constructors to accommodate for these different use cases. 
 
 - `public ObservableMessage(IMessageSummary message)`
 
@@ -216,13 +216,15 @@ Task<IEnumerable<MimeMessage>> DownloadAllEmailsAsync();
   Task DeleteMessageAsync(UniqueId uid);
   ```
 
-- UPDATE: **You must add more methods to implement the following functionalities:**
+- **You must add more methods to implement the following functionalities:**
 
   - Mark a message as Read
   - Mark a message as Favorite
   - Perform a search query on the list of emails, if the `From`, `Subject` or `Body` contains a given search string. Your search query should return the `UniqueId` 
 
   📌[Set a message flag](https://github.com/jstedfast/MailKit/tree/master?tab=readme-ov-file#setting-message-flags-in-imap)📌[Perform a search query](https://github.com/jstedfast/MailKit/tree/master?tab=readme-ov-file#searching-an-imap-folder)
+
+
 
 ### Testing 
 
@@ -245,7 +247,7 @@ if (DeviceInfo.Platform == DevicePlatform.Android)
 }
 ```
 
-> I didn't spend much time trying to setup a CA and a proper Server Certificate call-back, this is why I went with `MailKit`'s workaround, by setting the certificate call-back to true (not checking the validity of the certificate). This isn't the most secure option of course and is not recommended for production. But, for the purpose of getting this to work within the timeframe we have, this is the workaround we'll use.
+> I didn't spend much time trying to setup a CA and a proper Server Certificate call-back, this is why I went with `MailKit`'s workaround, by setting the certificate call-back to true (not checking the validity of the certificate). This isn't the most secure option of course, and is not recommended for production. But, for the purpose of getting this to work done within the timeframe we have, this is an acceptable workaround.
 
 
 
@@ -292,13 +294,45 @@ It might seem unusual to call an `async` method without awaiting it, and indeed,
 
 For a deeper dive into handling `async` calls in constructors, check out this [blog post](https://www.damirscorner.com/blog/posts/20221021-AvoidAsyncCallsInViewmodelConstructors.html).
 
+**UPDATE MARCH 12**
+
+**Search event handler**
+
+- You should use the collection view's Items Source to modify the list of emails displayed in the InboxView
+
+- If the search box is cleared, the displayed list of emails should reverted back to the original list.
+
+- When performing a search, the email service might throw the following exception:
+
+  *The ImapClient is currently busy processing a command in another thread. Lock the SyncRoot property to properly synchronize your threads.*
+
+- This error occurs if the service is solicited too often because a search is performed on the search's `TextChanged` event. As a user types, each character typed will trigger the search and therefore cause this error.
+
+- To reduce the risk of this happening, you can perform the search only when the search is complete (user hits search button)
+
+- A better solution, would be to use a `bool` flag to keep track of the status of the search and a conditional statement before running a new query. (ex: `IsSearching` or `IsProcessing`)
+
+  ```csharp
+  // inside the event handler
+  if(!IsLoading)
+  {
+      IsLoading = true;
+      var uids = await App.EmailService.SearchByStringAsync(SearchEntry.Text);
+      IsLoading = false;
+  }
+  ```
+
+  
+
 **XAML** 
 
 1. In the Inbox view, you should include an `SearchBar` within the `NavBar`, this will serve as a search bar to filter out emails:
 
-   > Hint: Use `Shell.TitleView` to include your search bar
+   > Hint: You can use`Shell.TitleView` to include your search bar as shown in the screenshots. But you are free to implement a better UI design.
 
-2. In the inbox view, use a `CollectionView` of a collection of email items
+   
+
+2. In the inbox view, use a `CollectionView` to display the collection of emails.
 
 3. Use a `<SwipeView>` as a `DataTemplate` of the `CollectionView.ItemTemplate`:
 
@@ -308,7 +342,7 @@ For a deeper dive into handling `async` calls in constructors, check out this [b
 
    - The swipe View is not supported on the windows platform. You must test this on a mobile device.
 
-   - To handler the swipe click you can do this in two different ways:
+   - To handle the swipe click, there exists two different ways:
 
 
    - **Way 1:** Adding new event handlers for the `Clicked` event of every Swipe Item.
@@ -356,7 +390,7 @@ For a deeper dive into handling `async` calls in constructors, check out this [b
 
      **UPDATE FEB 28:**
 
-   - When tapped, the email should be downloaded 
+   - When tapped, the email should be **downloaded in full** (using the `DownloadEmailAsync()` method, created earlier. 
    
    - The `ObservableMessage` must be marked as `Read` in the original collection of emails as well as on the email server. 
    
@@ -382,15 +416,15 @@ For a deeper dive into handling `async` calls in constructors, check out this [b
 
    <img src="images/assignments_images/assignment1_imgs/User_icon.png" Height=100 class="inline-img"/>
 
-   > Hint: You must use a converter within the Binding of the user icon label. This converter must return the first character of the display name:
+   > Hint: You could use a converter from the Sender emails address to the initial's  label. This converter must return the first character of the display name. 
 
-8. (Optional) Generate a background color for the `Frame` of the user icon based on the user email address.
+8. (Optional) Generate a background colour for the `Frame` of the user icon based on the user email address.
 
-   > Hint: You must a converter and find a way to translate letters to color value. 
+   > Hint: You must a converter and find a way to translate letters to colour value. 
 
 9. Unread emails (never tapped) should appear differently. Feel free to use any method to distinguish them 
 
-   > Hint: Use Converters to translate the `IsRead` property of an email into a UI attribute such as a color or a text style, etc..
+   > Hint: Use Converters to translate the `IsRead` property of an email into a UI attribute such as a colour or a text style, etc..
 
    
 
