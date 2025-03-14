@@ -1,7 +1,7 @@
 # Assignment 2 : Maui Email
 
 * **Worth**: 10%
-* 📅 **Due**: March 17, 2025 @ 23:59.
+* 📅 **Due**: March 20, 2025 @ 23:59.
 * 🕑 **Late Submissions**: Deductions for late submissions is 10%/day. 
   *To a maximum of 3 days. A a grade of 0% will be given after 3 days.*
 * 📥**Submission**: Submit through GitHub classroom.
@@ -146,7 +146,7 @@ As you modify the Service class, you'll learn that there are two ways of receivi
 
   - `IMessageSummary.Envelope` contains the sender, recipient, subject, date information. 
 
-    **UPDATE March 14- IMPORTANT CORRECTION: **
+    **UPDATE March 14- IMPORTANT CORRECTION :  Credits goes to Steven for finding this mistake**
 
     > MailKit's`MessagesFlags` is a [`FlagAttribute` Enum](https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=net-9.0) which means each message is flagged with a bit wise operation. A given message flag could be a combination of flags for example `Seen` and `Flagged`. This combination uses a bitwise logical OR operator ( `|` ). If you debug and observed the `IMessageSymmary`, some message flags will have the value `MessageFlags.Seen | MessageFlags.Flagged`.
 
