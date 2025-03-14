@@ -42,6 +42,14 @@ If you miss a class, you can catch up by completing the learning activities done
 - Project Team formation 
 - Assignment 2 instructions
 
+## Spring Break
+
+## Week7
+
+- Project MS1-Brainstorm Check-in
+- [Local App Data](notes/Lecture8_SavingData.md)
+- [Lab3](labs/lab3)
+
 <!-- 
 
 Project Team formation & Project definition
@@ -54,19 +62,25 @@ Project Team formation & Project definition
 
 ## Spring Break
 
-## Week7
 
-- [MVVM]()
-- Auth lab
 
 ## Week8
 
-- [Repository Pattern]
-- Real time db
+- Publisher-Subscriber Pattern
+
+- [MVVM]()
+
+- Repository Pattern
+
+  
+
+  
 
 ## Week9
 
 - Test 1
+- Auth lab
+- Real time db
 - Real time db part 2
 
 ## Week10
