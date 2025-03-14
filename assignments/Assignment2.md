@@ -146,12 +146,17 @@ As you modify the Service class, you'll learn that there are two ways of receivi
 
   - `IMessageSummary.Envelope` contains the sender, recipient, subject, date information. 
 
+    **UPDATE March 14- IMPORTANT CORRECTION: **
+
+    > MailKit's`MessagesFlags` is a [`FlagAttribute` Enum](https://learn.microsoft.com/en-us/dotnet/api/system.flagsattribute?view=net-9.0) which means each message is flagged with a bit wise operation. A given message flag could be a combination of flags for example `Seen` and `Flagged`. This combination uses a bitwise logical OR operator ( `|` ). If you debug and observed the `IMessageSymmary`, some message flags will have the value `MessageFlags.Seen | MessageFlags.Flagged`.
+
   - To set the `IsRead` property, you may use:
 
     ```csharp
-    IsRead = (message.Flags == MessageFlags.Seen);
+    var filterFlag = message.Flags & MessageFlags.Seen;
+    IsRead = (filterFlag == MessageFlags.Seen);
     ```
-
+    
     - The `Body` and `HtmlBody` should be `null` 
 
   > The sender `From` can be extracted using the following:
@@ -161,6 +166,8 @@ As you modify the Service class, you'll learn that there are two ways of receivi
   > ```
 
   - To set the `IsFavorite` property, use`MessageFlags.Flagged`
+
+    
 
 - `public ObservableMessage(MimeMessage mimeMessage, UniqueId uniqueId)`:
 
@@ -484,7 +491,7 @@ For a deeper dive into handling `async` calls in constructors, check out this [b
 
 **Code behind:**
 
-1. The constructor of the `WritePage` might optionally receives an email as input, if the email was forwarded.
+1. The constructor of the `WritePage` might optionally receives an `ObservableMessage`as an input, if the email was forwarded.
 
    > Hint: Create a default value for the passed argument and use conditional logic in the constructor.
 
@@ -500,7 +507,7 @@ For a deeper dive into handling `async` calls in constructors, check out this [b
 
 5. Contains a Send Button with a clicked event.
 
-6. Contains an entry bound to the `CurrentEmail`
+6. Contains an entry bound to the `EditEmail`
 
    - Should be `ReadOnly`
 
