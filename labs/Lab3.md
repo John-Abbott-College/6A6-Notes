@@ -1,8 +1,6 @@
 # Lab 3 - part 1
 
-
-
-1. 📝 **Worth:** 1%  (/10pts)
+1. 📝 **Worth:** 1%  (/10pts) 
 2. 📅 **Due:** Friday March 21, 2024 @End of class
 3. 🕑 **Late submissions:** Not accepted.
 4. 📥 **Submission:** In class 
@@ -147,21 +145,25 @@ You will have to complete the `Settings.xaml` page functionality in order to sav
 
 ## Exercise 4 - Reading an embedded file
 
-1. The`InfoPage.xaml`will serve as a placeholder for a static text contained in the `Files/InfoText.txt` file
+1. Create a text file and save it as  `Files/InfoText.txt`, we will use it as an embedded file. 
 
-3. Open your `MSBuild` file and add the file as an `EmbeddedResource`
+2. You can write a short description of the app or have Chat Gpt write some text.
 
-   
+3. The`Info.xaml`will serve as a placeholder for a static text contained in this file
 
-4. Implement the private method `LoadFile()`, open the embedded file and 
+4. Open your `MSBuild` file (`.csproj` file, you can open by double clicking the name of the project and add the file as an `EmbeddedResource`
+
+5. Implement the private method `LoadFile()`, open the embedded file and 
 
    > Hint: Use the `Assembly.GetExecutingAssembly().GetManifestResourceNames()` and `GetManifestResourceStream()` methods.	
 
-5. Using a `StreamReader`, read the content of the file
+6. Using a `StreamReader`, read the content of the file
 
-6. Set the `FileEditor.Text` to the content of the file.
+7. Set the `FileEditor.Text` to the content of the file.
 
-7. Display its content in the Editor
+8. Call the method in the constructor of the `Info` page
+
+9. Display its content in the Editor
 
 
 
