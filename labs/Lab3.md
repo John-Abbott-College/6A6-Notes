@@ -1,9 +1,9 @@
-# Lab 3 - Saving data
+# Lab 3 - part 1
 
 
 
-1. 📝 **Worth:** 2%  (/5pts)
-2. 📅 **Due:** Friday March 22, 2024 @End of class
+1. 📝 **Worth:** 1%  (/10pts)
+2. 📅 **Due:** Friday March 21, 2024 @End of class
 3. 🕑 **Late submissions:** Not accepted.
 4. 📥 **Submission:** In class 
 
@@ -16,27 +16,15 @@ In this lab, we will attempt to add navigation to the Maui Social Media App, add
 - Add flyout and tab bar navigation 
 - Use application preferences
 - Add and use embedded text files
-- Use and save app settings in a json format
-- Use an API to save images on the cloud.
-- Serialize and deserialize objects and data structures.
 
 
 
 ## Setup
 
-- Accept [this](ADD LINK) Github classroom assignment 
-- The required packages are already installed: 
-  - `Cloudinary` (to upload pictures on the cloud)
+- Accept the Github classroom assignment :
 
-
-
-#### Target platform
-
-For this lab we will be testing the app on two different form factors:
-
-- Android Emulator: Pixel 5 - API 34
-
-- (optional) iOS, **Note:** I did not configure app entitlements for iOS nor did I test the app on this platform yet.
+  - [Section 1](https://classroom.github.com/a/VkZFIBNE)
+  - [Section 2](https://classroom.github.com/a/GFAeEFHi)
 
   
 
@@ -59,7 +47,7 @@ As an inspiration, we will be using Instagram's layout to add navigation as such
 
    This will enable us to refer to the views folder from within xaml
 
-2. Add three pages within your `Views ` folder and add them as `ShellContent` in the `AppShell` :
+2. Add the pages below to the `ShellContent` in the `AppShell` :
 
    - Groups 
    - Info 
@@ -71,25 +59,14 @@ As an inspiration, we will be using Instagram's layout to add navigation as such
 
    <img src="images/maui_navigation/flyout_1.png" Height="300" class="inline-img"/>
 
-5. Some icons were included in the `Images/icons` but were not added yet to the Embedded Static Resources. You must do this first by double clicking the project file (`.csproj`) and adding the folder:
-
-   ```xml
-   <!-- Images -->
-   <MauiImage Include="Resources\Images\*" />
-   <MauiImage Include="Resources\Images\samples\*" />
-   <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-   
-   <MauiImage Update="Resources\Images\icons\*" />
-   ```
-
-6. Add a flyout item which will act as a button to switch between dark/light mode:
+5. Add a flyout item which will act as a button to switch between dark/light mode:
 
    ```xml
    <MenuFlyoutItem Text="Switch Theme"  Clicked="Btn_SwitchTheme_Clicked"/>
    
    ```
 
-7. Add the even handler in the `AppShell.xaml.cs`
+6. Add the even handler in the `AppShell.xaml.cs`
 
    ```csharp
    private void Btn_SwitchTheme_Clicked(object sender, EventArgs e)
@@ -111,11 +88,33 @@ As an inspiration, we will be using Instagram's layout to add navigation as such
    
    ```
 
+### Exercise 2 - Tab Bar 
+
+To combine the flyout menu and the tab bar, each `ShellContent` you wish to display in the `Flyout` should be wrapped within a `FlyoutItem` **instead of the `TabBar`** and keep the `ShellContent` you wish to keep in the Flyout as direct children of the `Shell`
+
+
+
+1. Modify the `AppShell` to create the following strucutre:
+
+   ```text
+   - Home
+     - MainPage
+     - SearchPage
+     - NewPost (tab)
+     	- SelectPhotos
+     	- CameraPage
+     - Videos
+     - ProfilePage
+   - Groups
+   - Info
+   - Settings
+   ```
+
    
 
-## Exercise 1 (1 pt) - App Preferences
+## Exercise 3 - App Preferences
 
-For this first exercise, you will have to complete the `Settings.xaml` page functionality in order to save three user preferences and then use them to define the Username displayed in `ProfilePage.xaml` and set the `App.Current.UserAppTheme`:
+You will have to complete the `Settings.xaml` page functionality in order to save three user preferences and then use them to define the Username displayed in `ProfilePage.xaml` and set the `App.Current.UserAppTheme`:
 
 | Preference name | Type     |
 | --------------- | -------- |
@@ -146,11 +145,9 @@ For this first exercise, you will have to complete the `Settings.xaml` page func
 
  **✨ Test your understanding** Is it possible to serialize an object inside the Preferences?
 
-## Exercise 2 (1pt) - Reading an embedded file
+## Exercise 4 - Reading an embedded file
 
-1. Open the `InfoPage.xaml`and inspect the UI elements
-
-2. This page will serve as a placeholder for a static text contained in the `Files/InfoText.txt` file
+1. The`InfoPage.xaml`will serve as a placeholder for a static text contained in the `Files/InfoText.txt` file
 
 3. Open your `MSBuild` file and add the file as an `EmbeddedResource`
 
@@ -168,150 +165,9 @@ For this first exercise, you will have to complete the `Settings.xaml` page func
 
 
 
-**Do it at the end:**
-
  **✨ Test your understanding**   What other files are included as embdedded files? 
 
 
-
-## Exercise 3 (1pt)
-
-1. In the `PostPage.xaml.cs`, implement the `Btn_Save_Clicked()` event handler
-2. Save the photo to the `FileSystem.AppDataDirectory`:
-
-> Hint: Read the stream of the file and use `sourceStream.CopyToAsync(destinationStream);` 
-
-3. You'll notice that you cannot validate your work because you do not have access to this directory on the Android Emulator.
-4. To validate that the file was correctly saved, we will upload the image on Cloudinary in **Exercise 5**. 
-
-
-
-## Exercise 4 (1pt) - Serialization
-
-To ensure the persistence of the app we would like to save the `ObservableCollection<Post>` to a json file using the `System.Text.Json.JsonSerializer` class. I have already created two methods in the `PostsRepo` which you need to implement: `LoadPosts()` and `SavePosts()`. I have also already added calls to these methods inside the `PostsRepo` class. 
-
-1. Inside the `App.xaml.cs`, create a new static `string`variable called `"DataFile`"
-
-2. Create a file path to a `"posts.json"` file saved in the `AppDataDirectory`
-
-3. Use this variable to initialize the static `PostsRepo` 
-
-4. Observe the constructor of the `PostsRepo` and implement the `SavePosts()` and `LoadPosts()` :
-
-   - Use a `try/catch` to ensure some error handling and logging of errors.
-   - Make sure that if the file doesn't exist to not make the app crash, since the first time this file won't exist.
-
-   > Hint: Use `JsonSerializer.Serialize<ClassToSerialize>(stream, ObjectToSerialize); `and `JsonSerializer.Deserialize<ClassToSerialize>(stream);`
-
-5. Test it by adding a few comments and likes to some posts and re-starting the app. Your changes should be saved.
-
-
-
- **✨ Test your understanding:**  What is the interest of using a static repo as opposed to simply initializing a list of posts in the code behind as we've done in the previous demos? 
-
-**✨ Test your understanding:**  Why did I make the `PostsRepo` implement the `INotifyPropertyChanged` interface?
-
- **✨ Test your understanding**  What is the interest of having an `UpdatePost()` method when I could simply let the Pages code behind change a given Post directly (ex: `Post.Likes++`)?
-
-
-
-## Exercise 5 (2pt) - Using an API to upload pictures.
-
-
-
-***Cloudinary- Setup***
-
-*Cloudinary* is a a cloud management service for images and videos which allows programmatical uploads of media files and enables image and video transformations (cropping, filtered, etc). We will use the free license to upload pictures taken with the ***MauiSocial App***. 
-
-Before using the service, we need to generate some api keys and secrets:
-
-1. Create an [account](https://cloudinary.com/users/register_free) or use GitHub to login
-
-2. Verify your account 
-
-3. Go to the **Dashboard**
-
-4. Get the **Cloud name**, **API Key**, **API Secret** 
-
-5. Save them to an `"appsettings.json"` file inside your project directory.
-
-   ```json
-   {
-     "CloudinaryConfig": {
-       "cloudName": "1234",
-       "apiKey": "1234",
-       "apiSecret": "1234"
-     }
-   }
-   ```
-
-   
-
-6. If you push your source code somewhere, do not push this `"appsettings.json"` file at the root of the project as these are your confidential keys.
-
-***Using the service***
-
-1. Add the `"appsettings.json"` as an the embedded resources 
-
-2. Install the following packages:
-
-   - Install the `Nuget Microsoft.Extensions.Configuration.Json` 
-   - Install the `Nuget Microsoft.Extensions.Configuration.Binder`
-
-   I've already created a Services folder in which I included a Config class to parse the content of the json
-
-3. Complete the constructor of the `CloudinaryService`:
-
-4. Get the `"appsettings.json"` stream and use the following line to parse the config:
-
-   ```csharp
-   _config = configuration.GetSection(nameof(CloudinaryConfig)).Get<CloudinaryConfig>();
-   ```
-
-5. Now inside the constructor instanciate the API class:
-
-   ```csharp
-   Account account = new Account( _config.CloudName, _config.ApiKey, _config.ApiSecret );
-   _cloudinary = new Cloudinary( account );
-   ```
-
-6. Use a `try/catch` inside the Service to ensure that the embedded file is properly found, parsed and used. 
-
-7. To test it out, go to your `App.xaml.cs` and create a static instance of this class.
-
-8. Run the app and observe any except being thrown. 
-
- **✨ Test your understanding:**  What's is an `"appsettings.json"` file typically used for? 
-
- **✨ Test your understanding:** What's the interest of including it as an embedded file. 
-
-
-
-9. Implement the method which should call `_cloudinary.UploadAsync()`: use proper exception handling to ensure that exceptions are logged to the console.
-
-```csharp
-public async Task<ImageUploadResult> UploadImage(string imageFilePath,string imageName)
-```
-
-10. Call the method inside the `Btn_Save_Clicked()` event handler inside the `PostPage`: 
-    - Use exception handling and display an alert in case of error. 
-    - Get the `secureurl`  from the returned result
-    - Add a new post in the `Repo` with this `url`
-    - You should see the post appearing in the `MainPage`
-
-
-
-
-
-## Bonus exercise 1pt  
-
-James Montemagno created an [Plug-in](https://github.com/jamesmontemagno/MediaPlugin) (installed as a Nuget package) which facilitates the action of taking pictures, saving them and saving them to Gallery. 
-
-Create a user preference inside the settings page which allow the user to have the option to automatically save posts to their phone Gallery. Then modify the Save button event handler in the Post Page to save the photo to the Gallery using the Plug-in. Test by insuring that the posts are saved to the gallery and your post page is still functional. 
-
-
-
-**✨ Test your understanding**: What can you say about this app's testability? Is it easily testable? What can we do to improve this?
 
 
 
