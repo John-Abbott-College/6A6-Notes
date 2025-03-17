@@ -114,14 +114,18 @@ To combine the flyout menu and the tab bar, each `ShellContent` you wish to disp
 
 You will have to complete the `Settings.xaml` page functionality in order to save three user preferences and then use them to define the Username displayed in `ProfilePage.xaml` and set the `App.Current.UserAppTheme`:
 
-| Preference name | Type     |
-| --------------- | -------- |
-| "`username`"    | `string` |
-| `"apptheme"`    | `bool`   |
+| Preference name                                      | Type     |
+| ---------------------------------------------------- | -------- |
+| "`username`" (You can rename it to something else)   | `string` |
+| `"apptheme" (You can rename it to something else)    | `bool`   |
+| `"profilepic"` (You can rename it to something else) | `string` |
 
 **Setting preferences**
 
 1. Inspect the `Settings.xaml` file and note the `TableView`'s content, these are the entries where the user can set their preferences.
+
+   > Note: Synchronize your starter repo, I added a TableView and the event handlers described below. Otherwise you can add a [TableView](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/tableview?view=net-maui-9.0).
+
 2. In `Settings.xaml.cs`, implement the event handlers to set each of the preference listed above
 
 > To set a preference use `Preferences.Set("nameofthepreference", value);`
@@ -139,13 +143,19 @@ You will have to complete the `Settings.xaml` page functionality in order to sav
 > `Preferences.Get("nameofthepreference", defaultvalue);`
 
 5. Get the preference of the theme to set the App theme inside the `AppShell.xaml.cs`
-6. Get the preference of the username and the user profile to set the username and profile picture inside the `ProfilePage.xaml.cs` and inside the `CommentsPage.xaml.cs`
+6. Get the preference of the username and the user profile to set the username and profile picture inside the `ProfilePage.xaml.cs` ~~and inside the `CommentsPage.xaml.cs`~~(removed 17-03-2025).
 
  **✨ Test your understanding** Is it possible to serialize an object inside the Preferences?
+
+**Optional Challenge**
+
+Hardcoding strings is not a good practice, especially since preferences are shared across multiple pages (e.g., Settings, ProfilePage). Additionally, adding new settings would require hardcoding new preference keys. You might also notice that pages do not always reload settings immediately. Can you propose a better way to store and retrieve user preferences without hardcoding keys while keeping Get/Set operations centralized? Ideally, your solution should use binding so that labels update automatically in one view when changed in the settings view.
 
 ## Exercise 4 - Reading an embedded file
 
 1. Create a text file and save it as  `Files/InfoText.txt`, we will use it as an embedded file. 
+
+   > Note: You can also synchronize your starter repo, I added a sample file. 
 
 2. You can write a short description of the app or have Chat Gpt write some text.
 
