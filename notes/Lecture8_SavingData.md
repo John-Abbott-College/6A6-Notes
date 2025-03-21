@@ -141,23 +141,19 @@ Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
 - A similar setup is required to enable file picking on iOS via Apple's sandbox
 
-- Refer to [this](https://learn.microsoft.com/en-us/dotnet/maui/mac-catalyst/deployment/publish-app-store?view=net-maui-8.0#add-entitlements) article to learn how to add *app entitlements* 
+- Refer to [this](https://learn.microsoft.com/en-us/dotnet/maui/ios/entitlements?view=net-maui-9.0#add-an-entitlementsplist-file) article to learn how to add *app entitlements* 
 
-- Add the following entitlements:
+- Add the following entitlements to  *Platforms/iOS/Info.plist* 
 
   ```xml
-  <key>com.apple.security.assets.movies.read-only</key>
-  <true/>
-  <key>com.apple.security.assets.music.read-only</key>
-  <true/>
-  <key>com.apple.security.assets.pictures.read-only</key>
-  <true/>
-  <key>com.apple.security.files.downloads.read-only</key>
-  <true/>
-  <key>com.apple.security.files.user-selected.read-only</key>
-  <true/>
-  <key>com.apple.security.personal-information.photos-library</key>
-  <true/>
+  <key>NSCameraUsageDescription</key>
+  <string>This app needs access to the camera to take photos.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>This app needs access to microphone for taking videos.</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>This app needs access to the photo gallery for picking photos and videos.</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>This app needs access to photos gallery for picking photos and videos.</string>
   ```
 
 
