@@ -181,7 +181,57 @@ Hardcoding strings is not a good practice, especially since preferences are shar
 
 
 
+# Lab 3 - Part 2
 
+## Exercise 5 - Serialization
+
+To ensure the persistence of the app we would like to save the `ObservableCollection<Post>` to a json file using the `System.Text.Json.JsonSerializer` class. I have already created two methods in the `PostsRepo` which you need to implement: `LoadPosts()` and `SavePosts()`. I have also already added calls to these methods inside the `PostsRepo` class. 
+
+1. Inside the `App.xaml.cs`, create a new static `string`variable called `"DataFile`"
+
+2. Create a file path to a `"posts.json"` file saved in the `AppDataDirectory`
+
+3. Use this variable to initialize the static `PostsRepo` 
+
+4. Observe the constructor of the `PostsRepo` and implement the `SavePosts()` and `LoadPosts()` :
+
+   - Use a `try/catch` to ensure some error handling and logging of errors.
+   - Make sure that if the file doesn't exist to not make the app crash, since the first time this file won't exist.
+
+   > Hint: Use `JsonSerializer.Serialize<ClassToSerialize>(stream, ObjectToSerialize); `and `JsonSerializer.Deserialize<ClassToSerialize>(stream);`
+
+5. Test it by adding a few comments and likes to some posts and re-starting the app. Your changes should be saved.
+
+
+
+ **✨ Test your understanding:**  What is the interest of using a static repo as opposed to simply initializing a list of posts in the code behind as we've done in the previous demos? 
+
+**✨ Test your understanding:**  Why did I make the `PostsRepo` implement the `INotifyPropertyChanged` interface?
+
+ **✨ Test your understanding**  What is the interest of having an `UpdatePost()` method when I could simply let the Pages code behind change a given Post directly (ex: `Post.Likes++`)?
+
+## Exercise 6 - Selecting and Taking pictures
+
+1. Modify the [app permission](https://john-abbott-college.github.io/6A6-Notes/#/notes/Lecture8_SavingData?id=file-picker) to allow access to the device drive and the camera. On Android the `appmanifest.xml` is found under the *Platforms > Android*, while iOS the `Info.plist` is found under *Platforms > iOS*
+
+2. Since the operation of picking a file or taking a picture is `I/O Bound` we want to avoid blocking the UI thread and instead async methods. 
+
+3. Modify the `FilePage.xaml` page which appears as the Select Photo page
+
+4. Add an Image button to this page with an event Handler *Btn_SelectPhoto_Clicked*
+
+   ```xaml
+   <ImageButton Source="{AppThemeBinding Light = select.png, Dark=select_dark.png}" BackgroundColor="Transparent" Clicked="Btn_SelectPhoto_Clicked" HorizontalOptions="Start" WidthRequest="100"/>
+   
+   ```
+
+5. Create the event handler
+
+6. Use `FilePicker.PickAsync` and `PickOptions()` to help the user select photos on their device.
+
+7. Modify the `NewPostPage.xaml` page which appears as the *Camera* Page in the app.
+
+8. Include two 
 
 # References
 
