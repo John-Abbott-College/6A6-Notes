@@ -58,25 +58,27 @@ On the mac, while ensuring you have admin privileges
 
 6. Record the IP address: which should start with 10.101.X.X
 
-#### Visual Studio pairing with MAC 
+## Visual Studio pairing with MAC 
 
 1. Once you are ready to test your MAUI app on the iOS simulator, go back to the Development machine running Visual Studio. 
 
-2. On your development machine, open the Visual Studio Mac pairing tool:
+2. **IMPORTANT: ** Ensure Visual Studio is up to date with version 17.11.X  -where X is the latest version. 
 
-3. Start pairing the mac and Windows machine:
+3. On your development machine, open the Visual Studio Mac pairing tool:
+
+4. Start pairing the mac and Windows machine:
 
    <img src="images/ios/pair_mac1.png" height=300/>
 
-4. You might be prompted to install missing components such as `monoruntime` and the `dotnet` SDK, accept and continue. This step might take a while but not more than 15 minutes.  
+5. You might be prompted to install missing components such as `monoruntime` and the `dotnet` SDK, accept and continue. This step might take a while but not more than 15 minutes.  
 
    <img src="images/ios/pair_mac_2.png" height=300/>
 
-5. If the connection is failing or the mac seems unreachable, ensure you can reach this `ip` address by running a `ping` to the mac ip from the development machine. 
+6. If the connection is failing or the mac seems unreachable, ensure you can reach this `ip` address by running a `ping` to the mac ip from the development machine. 
 
-6. Test out `ssh` to the mac to make sure remote connection is working. If it's not working, restart the mac and repeat the admin privilege request. steps. 
+7. Test out `ssh` to the mac to make sure remote connection is working. If it's not working, restart the mac and repeat the admin privilege request. steps. 
 
-7. If connection fails or stalls at the step of installing the required components, open Terminal on the Mac OS or ssh via command-line, while ensuring your have admin privileges, then install the maui workload: 
+8. If connection fails or stalls at the step of installing the required components, open Terminal on the Mac OS or ssh via command-line, while ensuring your have admin privileges, then install the maui workload: 
 
    > You can also connect via `ssh` and write this via command line on a Windows machine.
 
@@ -86,7 +88,7 @@ On the mac, while ensuring you have admin privileges
 
    
 
-8. Another possible mistake is *The Xcode license status couldn't be verified because Xcode has not been found on the default location of the connected Mac. Having Xcode installed and functional is necessary in order to build and run iOS apps, so please check that Xcode is correctly installed and that the path specified under iOS Settings is correct.*:
+9. Another possible mistake is *The Xcode license status couldn't be verified because Xcode has not been found on the default location of the connected Mac. Having Xcode installed and functional is necessary in order to build and run iOS apps, so please check that Xcode is correctly installed and that the path specified under iOS Settings is correct.*:
 
    From Visual Studio, try the following:
 
