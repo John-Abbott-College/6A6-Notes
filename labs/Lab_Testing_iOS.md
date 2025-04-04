@@ -4,7 +4,7 @@
 
 1. Login to a Mac PC
 
-2. Right click the Jamf icon from the Mac OS task bar and click *Request Admin Privileges*
+2. Right click the *Jamf* icon from the Mac OS task bar and click *Request Admin Privileges*
 
    <p align="center"><img src="images/ios/ios_mac_1.png" height=300/><img src="images/ios/ios_mac_1_1.png" height=300/></p>
 
@@ -72,7 +72,11 @@ On the mac, while ensuring you have admin privileges
 
    <img src="images/ios/pair_mac_2.png" height=300/>
 
-5. If after all installation, the connection fails, open Terminal on the Mac OS or ssh via command-line, while ensuring your have admin privileges, then install the maui workload: 
+5. If the connection is failing or the mac seems unreachable, ensure you can reach this `ip` address by running a `ping` to the mac ip from the development machine. 
+
+6. Test out `ssh` to the mac to make sure remote connection is working. If it's not working, restart the mac and repeat the admin privilege request. steps. 
+
+7. If connection fails or stalls at the step of installing the required components, open Terminal on the Mac OS or ssh via command-line, while ensuring your have admin privileges, then install the maui workload: 
 
    > You can also connect via `ssh` and write this via command line on a Windows machine.
 
@@ -82,12 +86,18 @@ On the mac, while ensuring you have admin privileges
 
    
 
-6. If this doesn't work, ensure you can reach this `ip` address by running a `ping` 
-7. If the mac is accessible, try restarting it and try again. 
+8. Another possible mistake is *The Xcode license status couldn't be verified because Xcode has not been found on the default location of the connected Mac. Having Xcode installed and functional is necessary in order to build and run iOS apps, so please check that Xcode is correctly installed and that the path specified under iOS Settings is correct.*:
 
-8. Once the pairing is successful, click OK
+   From Visual Studio, try the following:
 
-<img src=".images/ios/Paired_screen.png" height=300/>
+   - Open Tools > Options > Xamarin 
+   - Set the XCode path as shown below:
+
+<img src="images/ios/Pairing_with_mac_2.png" height=300/>
+
+1. Once the pairing is successful, click OK
+
+<img src="images/ios/Paired_screen.png" height=300/>
 
 9. From Visual studio, and so that the simulator window appears on the Windows machine, go to Tools > Options > Xamarin > iOS Settings 
 
@@ -103,9 +113,11 @@ On the mac, while ensuring you have admin privileges
 
 12. Run the app you wish to test, you should see appear the iOS simulator, the build process might take some time. 
 
-<img src=".images/ios/maui_app_on_ios_2.png" height=350/>
+<img src="images/ios/maui_app_on_ios_2.png" height=350/>
 
 13. The iOS simulator looks better on Mac computers, so it's recommended to also monitor the iOS device from the Mac.
+
+    
 
 ## Rider 
 
