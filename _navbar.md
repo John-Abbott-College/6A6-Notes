@@ -1,6 +1,7 @@
 * Getting Started
     - [Install MAUI](https://dotnet.microsoft.com/en-us/learn/maui/first-app-tutorial/install)
-    - [Setup emulator](https://dotnet.microsoft.com/en-us/learn/maui/first-app-tutorial/device-setup)
+    - [Setup Android emulator](https://dotnet.microsoft.com/en-us/learn/maui/first-app-tutorial/device-setup)
+    - [Setup iOS simulator](labs/Lab_Testing_iOS.md)
     
 * Schedule
     - [Weeks](schedule)
