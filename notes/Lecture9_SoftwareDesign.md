@@ -24,25 +24,25 @@ A concept can lead to one or more software classes.
 
 - The class diagram is part of the UML diagram, which shows the various classes in a project and the relationships between them. 
 
-  <img src="../images/software_design/uml_links.png" height=200/>
+  <img src="images/software_design/uml_links.png" height=200/>
 
 ### Composition  ("has a")
 
 In the composition relationship, the class cannot exist without the sub classes. 
 
-<img src="../images/software_design/composition_strong_has_a.png" height=200/>
+<img src="images/software_design/composition_strong_has_a.png" height=200/>
 
 ### Aggregation ("has a")
 
 In the aggregation, the class can exist without the sub-class. This is especially true if the class is made of a list of 0,..,n elements of the sub-class. Such as the car which has 4 wheels, if we remove one wheel, the car continues to exist but might not work as intended. 
 
-<img src="../images/software_design/aggregation_weak_has_a.png" height=200/>
+<img src="images/software_design/aggregation_weak_has_a.png" height=200/>
 
 ### Inheritance ("is a")
 
 The inheritance is a relationship where a class is a more specific case of a more general class. For example a square *is a* polygon. A `TemperatureSensor` *is a* `Sensor`.
 
-<img src="../images/software_design/uml_links_inheritence.png" height=100/>
+<img src="images/software_design/uml_links_inheritence.png" height=100/>
 
 ### Association ("uses a")
 
@@ -52,7 +52,7 @@ This is the most common relationship between classes, when a class simply refers
 
 The class diagram is also a good placeholder to specify the intended multiplicity of a relationship (one to one, one to many, many to many). This could also lead to a design of a well designed database. 
 
-<img src="../images/software_design/uml_multiplicity.png" height=120/>
+<img src="images/software_design/uml_multiplicity.png" height=120/>
 
 
 
