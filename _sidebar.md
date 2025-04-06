@@ -15,6 +15,8 @@
   
   - [**Local Data**](notes/Lecture8_SavingData.md)
   
+  - [**Software Design**](notes/Lecture9_SoftwareDesign)
+  
     
   
 - **Useful Links 🔗**

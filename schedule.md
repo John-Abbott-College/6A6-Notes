@@ -44,11 +44,34 @@ If you miss a class, you can catch up by completing the learning activities done
 
 ## Spring Break
 
-## Week7
+## Week 7
 
 - Project MS1-Brainstorm Check-in
+
 - [Local App Data](notes/Lecture8_SavingData.md)
+
+  
+
+## Week 8
+
+- [MVVM](notes/Lecture7_DesignPatterns_MVVM)
+- Time to work on the Assignment 2
 - [Lab3](labs/lab3)
+
+### Week 9
+
+- Project MS2: Presentations 
+- Review for Test 1
+
+### Week 10
+
+- Test 1
+- [Testing the iOS simulator](labs/Lab_Testing_iOS.md)
+
+### Week 11
+
+- Software Design Principles
+- Authentication Lab 
 
 <!-- 
 
@@ -60,32 +83,18 @@ Project Team formation & Project definition
 
   
 
-## Spring Break
-
-
-
-## Week8
+## Week11
 
 - Publisher-Subscriber Pattern
+- Auth lab
 
-- [MVVM]()
+## Week12
 
 - Repository Pattern
 
-  
-
-  
-
-## Week9
-
-- Test 1
-- Auth lab
 - Real time db
 - Real time db part 2
 
-## Week10
-## Week11
-## Week12
 ## Week13
 
 ## Week14

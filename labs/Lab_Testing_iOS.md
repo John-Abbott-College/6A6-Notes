@@ -1,12 +1,12 @@
 ## Testing on iOS simulator
 
-### **School Mac - Get Admin access **
+### **School Mac - Get Admin access**
 
 1. Login to a Mac PC
 
 2. Right click the *Jamf* icon from the Mac OS task bar and click *Request Admin Privileges*
 
-   <p align="center"><img src="images/ios/ios_mac_1.png" height=300/><img src="images/ios/ios_mac_1_1.png" height=300/></p>
+   <p json="left"><img src="images/ios/ios_mac_1.png" height=300/><img src="images/ios/ios_mac_1_1.png" height=300/></p>
 
 3. Select *Software Testing* as a reason for the request.
 
@@ -34,7 +34,7 @@ On the mac, while ensuring you have admin privileges
 
    <img src="images/ios/xcode_simulator.png" height=300/>
 
-### **Granting remote access **
+### **Granting remote access**
 
 1. Go to Settings > General > Sharing
 
