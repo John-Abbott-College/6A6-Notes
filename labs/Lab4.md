@@ -1,9 +1,7 @@
 # Lab 4 - Authentication API
 
-
-
-1. 📝 **Worth:** 3%  
-2. 📅 **Due:** Friday April 12, 2024 @End of class
+1. 📝 **Worth:** 2%  
+2. 📅 **Due:** Friday April 18, 2024 @End of class
 3. 🕑 **Late submissions:** Not accepted.
 4. 📥 **Submission:** In class
 
@@ -14,23 +12,12 @@
 In this lab, we will learn about authentication API to help you setup a similar mechanism in the final project. 
 
 - Learn how to setup an authentication API
-- Learn how to use it in a MAUI project
+- Learn how to use it in a MAUI project within an `MVVM` architecture
+- Learn more about C# `event`s and how to use event based programming to reinforce separation of concerns.
 - Learn more about the `IConnectivity` interface
 - Learn more about authentication and connectivity exception handling. 
 
 
-
-## Authentication
-
-Authentication is the process of validating the identity of a registered user or process before providing access to protected resources, networks or systems. It is a well studied problem in the domain of information security. Many protocols have been developed to standardize the process.
-
-`OAuth` is an **open protocol** to allow **secure authorization** in a **simple** and **standard** method from web, mobile and desktop applications. It enables sharing data across APIs without having to share a password. As matter of fact, `OAuth` 2.0 is the industry protocol for authorization. It allows a user to grant limited access to its protected resources.
-
-Many APIs use `OAuth` to provide authentication services to programmers to be able to build app with ease. Here are some of the common APIs that use OAuth:
-
-- Firebase by Google.
-- Azure Authentication by Microsoft.
-- Auth0 (https://auth0.com/)
 
 In this lab, we will examine `Firebase Authentication` and use it to authenticate users to use our `MauiFitness` app. Feel free to use any API in the project.
 
@@ -38,8 +25,8 @@ In this lab, we will examine `Firebase Authentication` and use it to authenticat
 
 - Use your section's GitHub classroom link:
 
-  - [Section 1](https://classroom.github.com/a/t1cd9lYA)
-  - [Section 2](https://classroom.github.com/a/7Ly8FIHk)
+  - [Section 1](TODO)
+  - [Section 2](TODO)
 
 - Accept the assignment Clone this repo locally
 
@@ -47,21 +34,23 @@ In this lab, we will examine `Firebase Authentication` and use it to authenticat
 
 - I also added a `Settings` class to parse all the configuration strings into a static `Settings` class
 
-- Use this class to add any new API key you will be using for this lab. Note: This is also how you should parse settings within your project.
+- Use this class to add any new API keys you will be using for this lab. 
 
+  > Note: This is also how you should parse settings within your project ,and detail this in the REDME.md
+  
   
 
 #### Meals and workout Apis keys:
 
 - Let's add API keys used by the `WorkoutService` and `MealService` class
 
-- Create an https://api-ninjas.com/ account
+- Create an https://api-ninjas.com/ account. You can use the dummy gmail account created earlier in the course.
 
 - Go into MyAccount
 
 - Click Show API Key
 
-- Copy this API key 
+- Copy this **API key** 
 
 - Add the following fields in `appsettings.json` and in the associated class `Config.Settings.cs`
 

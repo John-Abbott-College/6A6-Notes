@@ -17,6 +17,11 @@
   
   - [**Software Design**](notes/Lecture9_SoftwareDesign)
   
+  - [**Firebase APIs**](notes/Lecture10_Firebase.md)
+  
+  - [**Project Settings**](notes/Lecture11_Project_Configs.md)
+  
+    
     
   
 - **Useful Links 🔗**
