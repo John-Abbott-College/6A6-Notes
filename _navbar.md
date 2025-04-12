@@ -12,6 +12,7 @@
     - [Lab1](labs/lab1.md)
     - [Lab2](labs/lab2.md)
     - [Lab3](labs/Lab3.md)
+    - [Lab4](labs/Lab4.md)
     
 * Assignments
     - [Assignment 1](assignments/Assignment1.md)

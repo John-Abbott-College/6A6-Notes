@@ -79,4 +79,41 @@ public partial class App : Application
         }
 ```
 
-6. Now the `Settings` class contain all the config strings at runtime. Note if your app is using .NET's Dependency Injection service, you may want to register the class as a singleton and parse it from the `MauiProgram.cs` instead. 
+6. Now the `Settings` class contains all the config strings at runtime. 
+
+7. Note if your app is using .NET's Dependency Injection service, you may want to register the class as a singleton and parse it from the `MauiProgram.cs` instead:
+
+   ```csharp
+   namespace MauiFitness
+   {
+       public static class MauiProgram
+       {
+           public static MauiApp CreateMauiApp()
+           {
+               var builder = MauiApp.CreateBuilder();
+               builder
+                   .UseMauiApp<App>()
+                   .ConfigureFonts(fonts =>
+                   {
+                       fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                       fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                   });
+   
+   #if DEBUG
+       		builder.Logging.AddDebug();
+   #endif
+               var a = Assembly.GetExecutingAssembly();
+               var stream = a.GetManifestResourceStream("MauiFitness.appsettings.json");
+   
+               var config = new ConfigurationBuilder()
+                           .AddJsonStream(stream)
+                           .Build();
+               var settings = config.GetRequiredSection(nameof(Settings)).Get<Settings>();
+   
+               builder.Services.AddSingleton(new AuthService(settings));
+           }
+       }
+   }
+   ```
+
+   
