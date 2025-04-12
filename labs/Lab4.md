@@ -86,11 +86,11 @@ If you are working with the start-up app provided, the following steps are requi
 
 - Click on Console: 
 
-  <img src="../images/labs_images/Lab4/firebase_console.png" height=300/>
+  <img src="images/labs_images/Lab4/firebase_console.png" height=300/>
 
 - In the welcome page, click on `Create a Firebase project`
 
-- <img src="../images/labs_images/Lab4/firebase_new_proj.png" height=300/>
+- <img src="images/labs_images/Lab4/firebase_new_proj.png" height=300/>
 
 - Project Name: **MauiFitness** or you own project
 
@@ -102,7 +102,7 @@ If you are working with the start-up app provided, the following steps are requi
 
 - Scroll down and click on the `Authentication` block. 
 
-  <img src="../images/labs_images/Lab4/firebase_auth.png" alt="Snap shot" height="200"/>
+  <img src="images/labs_images/Lab4/firebase_auth.png" alt="Snap shot" height="200"/>
 
 - Click on `Get Started` to enable authentication and display the list of providers.
 
@@ -266,7 +266,7 @@ If you are working with the start-up app provided, the following steps are requi
 
   Currently the login page is a tab and will not prevent the user from accessing the app. We need to change the behavior to have a landing page, which is the login page. Once logged in, we navigate to the app tabs:
 
-  ​    <img src="../images/labs_images/Lab4/img03.png" alt="Snap shot" height="300" class="inline-img"/>
+  ​    <img src="images/labs_images/Lab4/img03.png" alt="Snap shot" height="300" class="inline-img"/>
 
   - The app should have only two navigation routes: `Login` and `Home` (the app tabs). 
   - Head to `AppShell.xaml` to make the changes:
@@ -318,7 +318,7 @@ If you are working with the start-up app provided, the following steps are requi
 
 - As you run the app, the user, should **only** be able to access the landing page:
 
-  <img src="../images/labs_images/Lab4/landingPage.png" alt="Snap shot" height="300" class="inline-img"/>
+  <img src="images/labs_images/Lab4/landingPage.png" alt="Snap shot" height="300" class="inline-img"/>
 
   After implementing the login functionality, the goal is to navigate to the `"Index"` route, so that the user can access the other page or go back to the login screen which will now only display a logout button:
 
@@ -565,7 +565,7 @@ If you are working with the start-up app provided, the following steps are requi
 
   
 
-  <img src="../images/labs_images/Lab4/img02.png" alt="Snap shot" height="300" class="inline-img"/>
+  <img src="images/labs_images/Lab4/img02.png" alt="Snap shot" height="300" class="inline-img"/>
 
   
 
