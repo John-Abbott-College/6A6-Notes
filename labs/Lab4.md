@@ -1,7 +1,7 @@
 # Lab 4 - Authentication 🔑 API
 
 1. 📝 **Worth:** 4%  
-2. 📅 **Due:** Friday April 18, 2024 @End of class
+2. 📅 **Due:** Friday April 14, 2024 @End of class
 3. 🕑 **Late submissions:** Not accepted.
 4. 📥 **Submission:** In class
 
