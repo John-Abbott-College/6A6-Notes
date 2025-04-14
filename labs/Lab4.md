@@ -32,8 +32,8 @@ For this lab, you have the option of using the starter code provided or use your
 
 - (optional) Use your section's GitHub classroom link:
 
-  - [Section 1](TODO)
-  - [Section 2](TODO)
+  - [Section 1](https://classroom.github.com/a/yIAMrI0E)
+  - [Section 2](https://classroom.github.com/a/7x_HCrro)
 
 - If you choose to work with your own project, create a new branch in the project called Lab4 and work on this branch:
 
@@ -323,21 +323,23 @@ If you are working with the start-up app provided, the following steps are requi
   After implementing the login functionality, the goal is to navigate to the `"Index"` route, so that the user can access the other page or go back to the login screen which will now only display a logout button:
 
   <div style="text-align:center;">
-      <img src="../images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
+      <img src="images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
+  </div>
 
   
 
   
+
 
   ✨ **Test your understanding**: For the project, how can you customize the pages that appear to the user based on who they are?
-
-  
 
   
 
   ## 🔗 View Model
 
   The authentication process is an **IO bound operation** and prone to errors. This will require some error handling and therefore some logic. To decouple this from the login screen, we will use a View Model. The role of this class will be to gather the email, and password inputted by the user, then communicate with the authentication service to attempt login. If the login fails, the view model will raise **events** which can then be used to display error messages to the user. 
+
+  
 
   ✨ **Test your understanding**: What design principle are we trying to respect by implementing a View Model and why?
 
@@ -541,7 +543,7 @@ If you are working with the start-up app provided, the following steps are requi
     
 
   - <div style="text-align:center;">
-        <img src="../images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
+        <img src="images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
 
   - Additionally,
 
@@ -555,10 +557,11 @@ If you are working with the start-up app provided, the following steps are requi
   
 
   <div style="text-align:center;">
-     <img src="../images/labs_images/Lab4/img04.png" alt="Snap shot" height="300"/>
+     <img src="images/labs_images/Lab4/img04.png" alt="Snap shot" height="300"/>
   </div>
 
   
+
 
   - Upon an `AuthenticationFailed` event being raised, 
     - Display an Alert showing the error message (for debug purposes)
