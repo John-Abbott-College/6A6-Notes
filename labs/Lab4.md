@@ -44,6 +44,11 @@ For this lab, you have the option of using the starter code provided or use your
 
 You will have to perform a few setups before starting the lab
 
+- Install the lastest versions of the *NuGet* Packages which are compatible with .NET 8:
+  - `Microsoft.Extensions.Configuration.Binder`
+
+  - `Microsoft.Extensions.Configuration.Json`
+
 - In the `MauiFitness` app, add a `"appsettings.json"` file 
 
 - Included it as an embedded file
@@ -325,9 +330,9 @@ If you are working with the start-up app provided, the following steps are requi
   <div style="text-align:center;">
       <img src="images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
   </div>
-
   
-
+  
+  
   
 
 
@@ -495,7 +500,7 @@ If you are working with the start-up app provided, the following steps are requi
 
     
 
-  ## Raising error events 
+### Raising error events 
 
   We would like to bubble up the errors to the View so that it can be displayed to the user. One possible way of achieving this is to create error labels that are bound to the UI.  Another approach is to Display the error messages from within the View Model. This approach though violates the principle of separation of concerns. 
 
@@ -543,7 +548,7 @@ If you are working with the start-up app provided, the following steps are requi
     
 
   - <div style="text-align:center;">
-        <img src="images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/>
+          <img src="images/labs_images/Lab4/img01.png" alt="Snap shot" height="300" class="inline-img"/> </div>
 
   - Additionally,
 
@@ -560,7 +565,7 @@ If you are working with the start-up app provided, the following steps are requi
      <img src="images/labs_images/Lab4/img04.png" alt="Snap shot" height="300"/>
   </div>
 
-  
+
 
 
   - Upon an `AuthenticationFailed` event being raised, 
@@ -582,7 +587,7 @@ If you are working with the start-up app provided, the following steps are requi
 
 
 
-## Logout Functionality
+### Logout Functionality
 
 
 
@@ -602,8 +607,7 @@ If you are working with the start-up app provided, the following steps are requi
   
 
 
-In the View Model:
--------
+### In the View Model:
 
   - Create a `LoginOut` method and use the `[RelayCommand]` attribute to turn it into a command
   - Bind the command to the Logout button
@@ -612,7 +616,7 @@ In the View Model:
     - Upon successful logout, raise a public event which can be connected to an event handler in the view
     - Finally, navigate to the login page using the route `await Shell.Current.GoToAsync($"//Login");`
 
-#### In the View
+## In the View
 
   - Upon receiving a successful logout event:
     - Clear the username and password entry fields.
