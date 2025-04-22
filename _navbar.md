@@ -17,6 +17,7 @@
 * Assignments
     - [Assignment 1](assignments/Assignment1.md)
     - [Assignment 2](assignments/Assignment2.md)
+    - [Assignment 3](assignments/Assignment3.md)
     
 * Project
     - [Instructions](https://docs.google.com/document/d/1mzlfJEHyhWedkW9OtjLSd3bU7YiWsuclyhHAvRRIaEs/edit?tab=t.0)

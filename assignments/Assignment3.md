@@ -1,6 +1,6 @@
 ## Assignment 3 : Test Driven Design
 
-- **Worth**: 7%
+- **Worth**: 6%
 - 📅 **Due**: May 2nd, 2025 @23:59
 - 🕑 **Late Submissions**: Deductions for late submissions is 10%/day. 
   *To a maximum of 3 days. A a grade of 0% will be given after 3 days.*
