@@ -66,6 +66,11 @@ Finally, you should test out all the functionality manually on the target platfo
 
 The starter code includes a few changes compared to the code from Assignment 2. Please take note of the following:
 
+**`EmailService`** **-UPDATE Apr 24**
+
+- The email service `MarkAsFavoriteAsync()` and  `MarkAsReadAsync()` have been modified to include the current value of the flag, in order to toggle between Read/unread and Favourite/Not-favourite. 
+- When calling those methods, be careful to use the **real current values** of those flags when trying to toggle the read/unread or favourite/not-favourite states. 
+
 **Dependency Injection**
 
 - All class instances are now created in `MainProgram.cs`, ensuring that only a single instance of each component exists — including the mail clients, mail service, mail configuration, and main page.
@@ -172,7 +177,7 @@ To effectively bind the new properties and commands in your view models to UI el
                Title="Inbox">
   ```
 
-- Due to a known issue in .NET 8, the `SearchBar`'s `SearchCommandParameter` binding may not work as expected. As a workaround, bind the `Text` property of the `SearchBar` to a public `SearchString` property in the ViewModel.
+- Due to a known issue in .NET 8, the `SearchBar`'s `SearchCommandParameter` binding may not work as expected. As a workaround, bind the `Text` property of the `SearchBar` to a public `SearchString` property in the `MainViewModel`. **UPDATE APR-24**: Then, bind the `SearchCommandParameter` to this property. 
 
 - The `SwipeView` has a different binding context from their parents. To use commands defined in the View Model, use relative binding and use the `x:Type viewmodels:MainViewModel` as such:
 
@@ -255,6 +260,10 @@ To receive it in the view model of the page being navigated to add a `QueryPrope
 
 - Create a `MainViewModel `inside a `ViewModels` folder. 
 - If you are using the Mvvm toolkit, this class should be a partial class inheriting from `ObservableObject`
+- You can register this view model as a singleton inside the `MauiProgram.cs`
+- **UPDATE:** As soon as you modify the `MainPage()` to accept the `MainViewModel`, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+  - I also recommend testing each functionality manually as you add them to the code. 
+
 
 #### Constructor
 
@@ -264,13 +273,14 @@ public MainViewModel(IEmailService emailService)
 
 #### Private fields
 
-- `IEmailService emailService`
+- `IEmailService emailService`, set in the constructor.
 -  You might need additional fields to performing the search filtering. 
 
 #### Public Properties
 
 - `Messages`:  A collection of `ObservableMessages`
 - `SearchString`: `string`
+- **UPDATE APR-24** : Bind the `SearchString` property to the `Text` field of the `SearchBar` as well as the `SearchCommandParameter`, this way the search text is sent to the `SearchCommand`. As explained earlier, there is a known bug with `SearchCommandParameter`. You should also use the setter of this property to handle the case of an empty of null search string. In this case, the `Messages` should be restored to their original value. Refer to the `SearchCommand` instructions below. 
 
 #### Public events
 
@@ -288,7 +298,7 @@ public event EventHandler UnknownError;
 
   - sets the `IsLoading`flag to `true` while awaiting the fetch operation 
 
-  - should be called in the constructor of the `MainViewModel` without awaiting
+  - should be called in the constructor of the `MainViewModel` without **awaiting**
 
   - raises the event `DownloadError` in case of an exception
 
@@ -296,13 +306,15 @@ public event EventHandler UnknownError;
 
 #### Commands
 
-All the commands should be bound to the UI element that calls it (Button or Text). The Commands should handle errors and raise the event `UnknownError` in case of an exception. 
+All the commands should be bound to the UI element that calls it (Button or Text Entry). The Commands should handle errors and raise the event `UnknownError` in case of an exception. 
 
 - `MarkAsFavoriteCommand(ObservableMessage email)`
 
-  - Mark a given email as favorite/ not favourite 
-  - You should test it to ensure the UI is refreshed after an email is marked as favorite
+  - This method replaces the `SwipeView` event handler for marking an email as favourite. 
+  - Mark a given email as favourite/ not favourite 
+  - You should test it to ensure the UI is refreshed after an email is marked as favourite
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
+  - **UPDATE APR 24:**  Call the `emailService.SearchByStringAsync()` first before changing the flag of the `ObservableMessage`. 
 
 - `MarkAsReadCommand(ObservableMessage email)`
 
@@ -310,15 +322,15 @@ All the commands should be bound to the UI element that calls it (Button or Text
   - You should test it to ensure the UI is refreshed after an email is marked as read
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
 
-- `SearchByStringCommand()` 
+- **UPDATE Apr 24**:`SearchByStringCommand(string searchString)` 
 
-  - Performs a search using the public property`SearchString`
+  - Performs a search using the injected command parameter `searchString`
 
   - If there are results, **filters** **out** the `Messages` to only display the emails which match the search results
 
-  - If the search results are null, the `Messages` should appear empty until the search bar is cleared.
+  - If the search results are null, the `Messages` should appear empty until the search bar is cleared. There is no `TextChangedCommand` which could be utilized to handle this event.
 
-    > Hint: Save the original list of emails in a separate collection. Use the setter of the `SearchString` to clear out the search results.  
+    > **Hint: Save the original list of emails in a separate collection. Use the setter of the `SearchString` to clear out the search results.**  
 
 - `DeleteEmailCommand(ObservableMessage email)`
 
@@ -340,6 +352,14 @@ All the commands should be bound to the UI element that calls it (Button or Text
 
 ## Read View Model 📖
 
+**UPDATE APR 24:** As soon as you modify the `ReadPage()` to accept the `ReadViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+
+- I also recommend testing each functionality manually as you add them to the code. 
+- Remove the `ObservableMessage email` sent through the constructor. 
+- This view model should be receiving a `QueryParameter` of type`ObservableMessage` which is the email to be displayed.
+
+#### 
+
 #### Constructor
 
 ```csharp
@@ -349,7 +369,10 @@ public ReadViewModel(IEmailService emailService)
 #### Public Properties
 
 - `bool IsLoading`: Flag set to `true` when the email is being downloaded in full.
-- `ObservableMessage Email`: Bound to the UI to display the email content.
+
+- `ObservableMessage Email`: Bound to the UI to display the email content. **UPDATE APR 24:** This value is passed through navigation query.  Note that the message bodies will only show up through the `WebView` if they are in html format (try displaying a Google Account email for example): 
+
+  <img src="../images/assignments_images/assignment3_imgs/readview.png" height=350/>
 
 #### Public events
 
@@ -373,6 +396,12 @@ public ReadViewModel(IEmailService emailService)
   - Test this method manually by forwarding an email and ensuring that the app navigates to the correct page and displays the forwarded email.  
 
 ## Write View Model 🖆
+
+**UPDATE APR 24:** As soon as you modify the `WritePage()` to accept the `WriteViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+
+- I also recommend testing each functionality manually as you add them to the code. 
+- Remove the `ObservableMessage email` sent through the constructor. 
+- This view model should be receiving a `QueryParameter` of type`ObservableMessage` which is the email to be edited.  If this message is not set, then instantiate a new `ObservableMessage` to use as the `EditEmail`.
 
 #### Constructor
 
