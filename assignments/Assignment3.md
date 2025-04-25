@@ -11,7 +11,7 @@
 
 - Refactor existing code
 
-- Use an architectural patterns (MVVM)
+- Use an architectural pattern (MVVM)
 - Run unit tests 
 - Write unit tests 
 - Perform manual tests
@@ -261,7 +261,7 @@ To receive it in the view model of the page being navigated to add a `QueryPrope
 - Create a `MainViewModel `inside a `ViewModels` folder. 
 - If you are using the Mvvm toolkit, this class should be a partial class inheriting from `ObservableObject`
 - You can register this view model as a singleton inside the `MauiProgram.cs`
-- **UPDATE:** As soon as you modify the `MainPage()` to accept the `MainViewModel`, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+- **UPDATE:** As soon as you modify the `MainPage()` to accept the `MainViewModel`, remove or comment out all the other fields/methods in this page which will now be covered by this view model. 
   - I also recommend testing each functionality manually as you add them to the code. 
 
 
@@ -314,13 +314,14 @@ All the commands should be bound to the UI element that calls it (Button or Text
   - Mark a given email as favourite/ not favourite 
   - You should test it to ensure the UI is refreshed after an email is marked as favourite
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
-  - **UPDATE APR 24:**  Call the `emailService.SearchByStringAsync()` first before changing the flag of the `ObservableMessage`. 
+  - **UPDATE APR 24:**  Call the `emailService.MarkAsFavoriteAsync()` first before changing the flag of the `ObservableMessage`. 
 
 - `MarkAsReadCommand(ObservableMessage email)`
 
   - Mark a given email as read/ not favourite 
   - You should test it to ensure the UI is refreshed after an email is marked as read
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
+    - **UPDATE APR 24:** Similarly to marking as favourite, call the `emailService.MarkAsReadAsync()`
 
 - **UPDATE Apr 24**:`SearchByStringCommand(string searchString)` 
 
@@ -337,13 +338,14 @@ All the commands should be bound to the UI element that calls it (Button or Text
   - Deletes an email from the list of emails. 
   - You should test it to ensure the UI is refreshed after an email is deleted
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
+  - **UPDATE APR 24:** Similarly to marking as favourite, call the service method first before updating the UI. 
 
 - `TapEmailCommand(ObservableMessage email)`
 
   - Should raise `EmailNotFoundError` if the provided email is not found in the list of emails.
   - Navigates to the `ReadPage` using shell navigation. 
 
-> Hint: The `ReadPage` has a route that correspond to "ReadPage".
+> Hint: The `ReadPage` has a route that correspond to "ReadPage". You should use `nameof()` as it is better for code maintainability. 
 
 - `WriteMessageCommand()`
   - Simply navigates to the `WritePage` using shell navigation. 
@@ -352,13 +354,13 @@ All the commands should be bound to the UI element that calls it (Button or Text
 
 ## Read View Model 📖
 
-**UPDATE APR 24:** As soon as you modify the `ReadPage()` to accept the `ReadViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+**UPDATE APR 24:** As soon as you modify the `ReadPage()` to accept the `ReadViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will now be covered by this view model. 
 
 - I also recommend testing each functionality manually as you add them to the code. 
 - Remove the `ObservableMessage email` sent through the constructor. 
 - This view model should be receiving a `QueryParameter` of type`ObservableMessage` which is the email to be displayed.
 
-#### 
+
 
 #### Constructor
 
@@ -370,8 +372,10 @@ public ReadViewModel(IEmailService emailService)
 
 - `bool IsLoading`: Flag set to `true` when the email is being downloaded in full.
 
-- `ObservableMessage Email`: Bound to the UI to display the email content. **UPDATE APR 24:** This value is passed through navigation query.  Note that the message bodies will only show up through the `WebView` if they are in html format (try displaying a Google Account email for example): 
+- `ObservableMessage Email`: Bound to the UI to display the email content. **UPDATE APR 24:** This value is passed through navigation query.  Note that the message bodies will only show up through the `WebView` if they are in an `HTML` format. You can try displaying a Google Account email or a "reset password" email to test this out. 
 
+  > This is a technical debt in the app which should be able to handle all types of email bodies. 
+  
   <img src="../images/assignments_images/assignment3_imgs/readview.png" height=350/>
 
 #### Public events
@@ -383,7 +387,7 @@ public ReadViewModel(IEmailService emailService)
 #### Private Methods
 
 - `LoadEmail()`
-  - Method called in the constructor of the view model to mark the email as read, download the remaining parts of the email (`Body` and `HtmlBody`)
+  - Method called in the constructor of the view model to mark the email as read and download the remaining parts of the email (`Body` and `HtmlBody`)
   - This method should raise the event `ErrorOccured` if an exception is caught
   - It should also set the `IsLoading` flag while the download process is ongoing.
 
@@ -397,17 +401,19 @@ public ReadViewModel(IEmailService emailService)
 
 ## Write View Model 🖆
 
-**UPDATE APR 24:** As soon as you modify the `WritePage()` to accept the `WriteViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will be now covered by this view model. 
+**UPDATE APR 24:** As soon as you modify the `WritePage()` to accept the `WriteViewModel` through its constructor, remove or comment out all the other fields/methods in this page which will now be covered by view model. 
 
 - I also recommend testing each functionality manually as you add them to the code. 
 - Remove the `ObservableMessage email` sent through the constructor. 
-- This view model should be receiving a `QueryParameter` of type`ObservableMessage` which is the email to be edited.  If this message is not set, then instantiate a new `ObservableMessage` to use as the `EditEmail`.
+- This view model should be receiving a `QueryParameter` of type`ObservableMessage` which is the email to be edited.  If the `EditEmail` is not set, then instantiate a new empty `ObservableMessage` to use as the `EditEmail`.
 
 #### Constructor
 
 ```csharp
 public WriteViewModel(IEmailService emailService, IMailConfig config)
 ```
+
+- Should check if the `EditEmail` is set. If not, it should create a new instance. 
 
 #### Private fields
 
