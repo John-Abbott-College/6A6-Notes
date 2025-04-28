@@ -372,13 +372,13 @@ public ReadViewModel(IEmailService emailService)
 
 #### Public Properties
 
-- `bool IsLoading`: Flag set to `true` when the email is being downloaded in full.
+- `bool IsLoading`: Flag set to `true` when the email is being downloaded in full. Use this flag to ensure that the `EmailService` is not running another process in a different thread and to avoid race conditions. 
 
 - `ObservableMessage Email`: Bound to the UI to display the email content. **UPDATE APR 24:** This value is passed through navigation query.  Note that the message bodies will only show up through the `WebView` if they are in an `HTML` format. You can try displaying a Google Account email or a "reset password" email to test this out. 
 
   > This is a technical debt in the app which should be able to handle all types of email bodies. 
   
-  <img src="../images/assignments_images/assignment3_imgs/readview.png" height=350/>
+  <img src="images/assignments_images/assignment3_imgs/readview.png" height=350/>
 
 #### Public events
 
@@ -389,8 +389,19 @@ public ReadViewModel(IEmailService emailService)
 #### Private Methods
 
 - `LoadEmail()`
+  
   - Method called in the constructor of the view model to mark the email as read and download the remaining parts of the email (`Body` and `HtmlBody`)
-  - This method should raise the event `ErrorOccured` if an exception is caught
+  
+  - **UPDATE Apr 27:**  A [better approach](https://www.youtube.com/watch?v=vkaViksRSdU&ab_channel=vlogize) is to call this method in the `setter` of the `Email` property to load the email on a sperate thread as shown below. This strategy has two advantages, 1- will not block the main thread while the email is being downloaded, and 2- will ensure the query property has been properly (setter called), which reduces the risks of having a `null` `Email` and exceptions being thrown by the constructor of the `ReadViewModel`. 
+  
+    ```csharp
+    Task.Run(async() => await LoadEmail());
+    ```
+  
+  - This method should raise the event `ErrorOccured` if an exception is caught.
+  
+  - **UPDATE Apr 27**: Keep in mind that the view model is created before the `ReadPage` is initialized. As a result, subscribing to the event in `ReadPage` might miss exceptions thrown during the `ReadViewModel` constructor. You should log the error messages to the console to help with d
+  
   - It should also set the `IsLoading` flag while the download process is ongoing.
 
 #### Commands
