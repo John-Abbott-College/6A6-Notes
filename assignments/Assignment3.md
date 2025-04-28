@@ -165,6 +165,8 @@ To effectively bind the new properties and commands in your view models to UI el
 
 - To enable XAML IntelliSense and proper binding, include the ViewModel namespace and specify the `BindingContext` directly in XAML:
 
+  **UPDATE Apr 27:** Use compile-time binding`x:DataType` not `BindingContext`:
+
   ```xml
   <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -173,7 +175,7 @@ To effectively bind the new properties and commands in your view models to UI el
                Shell.BackgroundColor="{StaticResource Primary}"
                xmlns:converters="clr-namespace:MauiEmail.Converters"
                xmlns:viewmodels="clr-namespace:MauiEmail.ViewModels"
-               BindingContext="{x:Type viewmodels:MainViewModel}"
+               x:DataType="{x:Type viewmodels:MainViewModel}"
                Title="Inbox">
   ```
 
