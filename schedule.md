@@ -73,6 +73,18 @@ If you miss a class, you can catch up by completing the learning activities done
 - Software Design Principles
 - Authentication Lab 
 
+## Week12
+
+- Auth lab
+- Query Parameters 
+- Assignment 3
+
+## Week14
+
+- Project IoT Hub integration 
+- Services class and testing 
+- Final project - Milestone 5 Demos
+
 <!-- 
 
 Project Team formation & Project definition
@@ -81,7 +93,6 @@ Project Team formation & Project definition
 
 - Lab3 : App settings & start-up behaviour and file and camera picker, permissions. 
 
-  
 
 ## Week11
 
@@ -90,13 +101,22 @@ Project Team formation & Project definition
 
 ## Week12
 
-- Repository Pattern
+- Auth lab
 
-- Real time db
-- Real time db part 2
+- Query Parameters 
+
+- Assignment 3
+
 
 ## Week13
 
+- Repository Pattern
+- Real time db
+- Real time db part 2
+
 ## Week14
+
+- Project IoT Hub integration 
+- Services class and testing 
 
  -->
