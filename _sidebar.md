@@ -34,4 +34,5 @@
   - [Maui Social 📷](https://github.com/AppDevIII-Code/MauiSocial)
   - [Binding Tips💵](https://github.com/AppDevIII-Code/BindingTips)
   - [Email Console 📧](https://github.com/AppDevIII-Code/EmailConsoleApp.git)
+  - [Maui Fitness 🏋🏽](https://github.com/AppDevIII-Code/MauiFitness)
 
