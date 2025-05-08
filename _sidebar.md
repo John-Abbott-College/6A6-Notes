@@ -21,6 +21,8 @@
   
   - [**Project Settings**](notes/Lecture11_Project_Configs.md)
   
+  - [**IoT Hub**](notes/Lecture_ConnectingtoIoT.md)
+  
     
     
   
