@@ -6,6 +6,8 @@ In the final project, you are tasked with connecting the .NET MAUI app with the 
 
 I have tried to summarized a few key concepts that will help with this part of the project.
 
+Main source: [420-6P3 Connected Objects ](https://john-abbott-college.github.io/6P3-Notes/notes/azure-eventhub/)
+
 - **IoT Communication protocol - Publisher-Subscriber:**
 
   - There is a `MQTT` broker allowing a Publisher-Subscriber connection with the IoT hub and the client used in the .NET App.
@@ -152,7 +154,7 @@ You can skip any step you've already done in connected objects.
 
      
 
-   - Retrieve the Built-in endpoints This value corresponds to the **"HubConnectionString"**
+   - Retrieve the Built-in endpoints This value corresponds to the **"EventHubConnectionString"**
 
      <img src="images/azure_iot_hub//creating_iot_hub_5.png" height=350/>
 
@@ -178,7 +180,9 @@ You can skip any step you've already done in connected objects.
 
      
 
-   
+4. (Update May 19) To get the `HubConntectionString`, you need to go back to the created `Iot Hub`:
+
+   <img src="../images/azure_iot_hub/creating_iot_hub_7.png"/>
 
 Read this part from Azure's documentation if you wish to:
 
@@ -210,6 +214,10 @@ As you've seen in Connected objects notes. It's is up to you wish one you choose
 - Nuget: `Azure.Messaging.EventHubs.Processor`
 
 #### Clients
+
+⚠️ Be careful the `HubConnectionString` is NOT the same thing as the `EventHubConnectionString`! 
+
+The `EventHubConnectionString` should look like  a `"Endpoint=sb://iothub-ns- ...."`
 
 ```csharp
 var storageClient = new BlobContainerClient(StorageConnectionString, BlobContainerName);
@@ -286,11 +294,17 @@ finally
 
 #### Clients
 
+⚠️ Be careful the `HubConnectionString` is NOT the same thing as the `EventHubConnectionString`!
+
+The `HubConnectionString` should look like  a `"HostName=...."`
+
 ```csharp
  // Create a ServiceClient to communicate with service-facing endpoint on your hub.
             using var serviceClient = ServiceClient.CreateFromConnectionString(parameters.HubConnectionString);
 
 ```
+
+
 
 ### Invoking the method - example of `SetTelemetryInterval`
 
@@ -375,7 +389,7 @@ From connected objects:
 
 <img src="images/azure_iot_hub//17-device-twins-desired-flow.png" Height=400/>
 
-### In .NET, two clients are useful:
+### Clients: two .NET clients are useful:
 
 From connected objects Notes:
 
